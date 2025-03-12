@@ -222,8 +222,10 @@ class HistoryView extends GetView<HistoryController> {
                   ),
                 ],
               ),
-              Obx(() => controller.index == 0 ? CheckboxWidget1() : SizedBox()),
-              Obx(() => controller.index == 1 ? CheckboxWidget2() : SizedBox()),
+              Obx(() =>
+                  controller.index.value == 0 ? CheckboxWidget1() : SizedBox()),
+              Obx(() =>
+                  controller.index.value == 1 ? CheckboxWidget2() : SizedBox()),
             ],
           ),
         ),
@@ -484,28 +486,26 @@ class CheckboxWidget1 extends GetView<HistoryController> {
         alignment: Alignment.bottomRight,
         child: Padding(
           padding: EdgeInsets.all(Get.width * 0.01),
-          child: Flexible(
-            child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                  height: Get.height * 0.08,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFE018EE0),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(8),
-                    child: Center(
-                      child: Text(
-                        'Track Order',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white),
-                      ),
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+                height: Get.height * 0.08,
+                decoration: BoxDecoration(
+                  color: Color(0xFFE018EE0),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Center(
+                    child: Text(
+                      'Track Order',
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white),
                     ),
-                  )),
-            ),
+                  ),
+                )),
           ),
         ),
       ),
@@ -534,9 +534,7 @@ class CheckboxWidget2 extends GetView<HistoryController> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 18,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
           child: Text(
             'Points Expiry',
             style: TextStyle(
@@ -548,42 +546,49 @@ class CheckboxWidget2 extends GetView<HistoryController> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Container(
-            height: Get.height * 0.06,
+            //  height: Get.height * 0.06,
             decoration: BoxDecoration(
                 color: Color(0xff018EE0),
                 borderRadius: BorderRadius.vertical(top: Radius.circular(6))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                pointWidget('Today', fontSize: 20, color: Colors.black),
-                pointWidget('Tomorrow', fontSize: 20, color: Colors.black),
-                pointWidget('Within 7 Days', fontSize: 20, color: Colors.black),
-                pointWidget('This Month', fontSize: 20, color: Colors.black),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  pointWidget('Today', fontSize: 20, color: Colors.black),
+                  pointWidget('Tomorrow', fontSize: 20, color: Colors.black),
+                  pointWidget('Within 7 Days',
+                      fontSize: 20, color: Colors.black),
+                  pointWidget('This Month', fontSize: 20, color: Colors.black),
+                ],
+              ),
             ),
           ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Container(
-            height: Get.height * 0.06,
+            //  height: Get.height * 0.06,
             decoration: BoxDecoration(
                 color: Color(0xffFFFFFF),
                 borderRadius:
                     BorderRadius.vertical(bottom: Radius.circular(6))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                pointWidget('100'),
-                pointWidget('200'),
-                pointWidget('500'),
-                pointWidget('1000'),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  pointWidget('100'),
+                  pointWidget('200'),
+                  pointWidget('500'),
+                  pointWidget('1000'),
+                ],
+              ),
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
           child: Text(
             'Points History',
             style: TextStyle(
@@ -592,29 +597,40 @@ class CheckboxWidget2 extends GetView<HistoryController> {
                 color: Color(0xff151515)),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Container(
-            height: Get.height * 0.1,
-            decoration:
-                BoxDecoration(border: Border.all(color: Color(0xff4BB033))),
-          ),
-        )
+        pointsHistory(
+          '2000',
+          'From',
+          'New Policy 0012',
+          'Transaction Type - Earned',
+        ),
+        pointsHistory(
+            '1000', 'For', 'Boat Earbuds ANC', 'Transaction Type - Redeemed',
+            color: Color(0xffED1B23)),
+        pointsHistory('1000', 'For', 'Points Expiry', 'Expired Points',
+            color: Color(0xffED951B)),
+        pointsHistory('2000', 'From', 'Cancelled Policy 0012',
+            'Transaction Type - Forfeit',
+            color: Color(0xffED1B23)),
+        pointsHistory(
+          '2000',
+          'From',
+          'New Policy 0012',
+          'Transaction Type - Earned',
+        ),
       ],
     );
   }
 }
 
 Widget pointWidget(String? text, {double? fontSize, Color? color}) {
-  return Expanded(
-      child: Text(
+  return Text(
     text ?? "",
     textAlign: TextAlign.center,
     style: TextStyle(
         fontSize: fontSize ?? 22,
         fontWeight: FontWeight.w600,
         color: color ?? Color(0xffED951B)),
-  ));
+  );
 }
 
 myContainer() {
@@ -664,6 +680,96 @@ myContainer() {
           )
         ],
       ),
+    ),
+  );
+}
+
+pointsHistory(String? points, text, status, type, {Color? color}) {
+  return Container(
+    alignment: Alignment.center,
+    margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+    decoration: BoxDecoration(
+        border: Border.all(color: color ?? Color(0xff4BB033)),
+        borderRadius: BorderRadius.circular(6),
+        color: Colors.white),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    points ?? "",
+                    style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.w600,
+                        color: color ?? Color(0xff4BB033)),
+                  ),
+                  Text(
+                    'Points',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: color ?? Color(0xff4BB033)),
+                  )
+                ],
+              ),
+              Center(
+                child: Text(
+                  '25 sept 2023 | 20:12pm',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff464646)),
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    text ?? "",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff464646)),
+                  ),
+                  Text(
+                    status ?? "",
+                    style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff606060)),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+        Divider(
+          color: Colors.grey,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              type ?? "",
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  color: color ?? Color(0xff4BB033)),
+            ),
+            SizedBox(
+              width: 100,
+            )
+          ],
+        ),
+      ],
     ),
   );
 }

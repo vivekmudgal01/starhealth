@@ -4,7 +4,7 @@ import 'package:star_health/services/remote_services.dart';
 
 class LeaderboardController extends GetxController {
   //TODO: Implement LeaderboardController
-  var index = 0.obs;
+  // var index = 0.obs;
   var futurecatalogueModel = CatalogueModel().obs;
   var isLoaded = false.obs;
 
@@ -29,5 +29,14 @@ class LeaderboardController extends GetxController {
     if (futurecatalogueModel.value.status ?? false) {
       isLoaded.value = true;
     }
+  }
+
+  String nameString() {
+    var str = "Vivek Mudgal";
+    var parts = str.split(' ');
+    var prefix = (parts[0][0].toUpperCase());
+    var prefix2 = (parts[1][0].toUpperCase()); // prefix: "date"
+    return "${prefix}${prefix2}";
+    //return "${prefix} ${prefix2}";
   }
 }

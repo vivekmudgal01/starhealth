@@ -36,8 +36,8 @@ class RedeemView extends GetView<RedeemController> {
         child: Column(
           children: [
             Container(
-              height: 50,
-              width: 310,
+              height: Get.height * 0.04,
+              //  width: 310,
               color: Colors.lightBlue,
               child: Row(
                 children: [
@@ -80,8 +80,8 @@ class RedeemView extends GetView<RedeemController> {
                   child: Obx(() {
                     // Blue for index 0, Green for index 1
                     return Container(
-                      height: 50,
-                      width: 120,
+                      height: Get.height * 0.04,
+                      width: Get.width * 0.06,
                       decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.horizontal(left: Radius.circular(6)),
@@ -110,8 +110,8 @@ class RedeemView extends GetView<RedeemController> {
                   child: Obx(() {
                     // Grey for index 0, Orange for index 1
                     return Container(
-                      height: 50,
-                      width: 120,
+                      height: Get.height * 0.04,
+                      width: Get.width * 0.06,
                       decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.horizontal(right: Radius.circular(6)),
@@ -144,8 +144,8 @@ class RedeemView extends GetView<RedeemController> {
                 GestureDetector(
                   onTap: () {},
                   child: Container(
-                    height: 50,
-                    width: 120,
+                    height: Get.height * 0.04,
+                    width: Get.width * 0.06,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6),
                         color: Colors.transparent,
@@ -166,8 +166,8 @@ class RedeemView extends GetView<RedeemController> {
                     CheckboxWidget1();
                   },
                   child: Container(
-                    height: 50,
-                    width: 120,
+                    height: Get.height * 0.04,
+                    width: Get.width * 0.06,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6),
                         color: Colors.blue),
@@ -189,13 +189,13 @@ class RedeemView extends GetView<RedeemController> {
       ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 100,
+        toolbarHeight: Get.height * 0.15,
         title: Image(
           image: AssetImage(
             'images/asset/mainlogo.png',
           ),
-          height: 64,
-          width: 148,
+          height: Get.height * 0.15,
+          width: Get.width * 0.1,
         ),
         actions: [
           Container(
@@ -259,7 +259,7 @@ class RedeemView extends GetView<RedeemController> {
             backgroundColor: Colors.white,
             padding: EdgeInsets.all(4),
             alignment: Alignment.topRight,
-            offset: Offset(3, 0),
+            offset: Offset(-22, -2),
             isLabelVisible: true,
             textStyle: TextStyle(
               fontWeight: FontWeight.w700,
@@ -268,8 +268,8 @@ class RedeemView extends GetView<RedeemController> {
             ),
             textColor: Colors.black,
             child: Container(
-              height: 50,
-              width: 50,
+              height: Get.height * 0.07,
+              width: Get.width * 0.07,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: const Color(0xff55B3EA),
@@ -287,7 +287,6 @@ class RedeemView extends GetView<RedeemController> {
           SizedBox(
             width: 30,
           )
-          // Text('                      ')
         ],
         backgroundColor: Color(0xFF018EE0),
       ),
@@ -332,8 +331,8 @@ class RedeemView extends GetView<RedeemController> {
                   Row(
                     children: [
                       Container(
-                        height: 52,
-                        width: 400,
+                        height: Get.height * 0.06,
+                        width: Get.width * 0.3,
                         child: TextField(
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -354,8 +353,8 @@ class RedeemView extends GetView<RedeemController> {
                           _scaffoldKey.currentState!.openEndDrawer();
                         },
                         child: Container(
-                          height: 50,
-                          width: 50,
+                          //   height: 50,
+                          //  width: 50,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(6)),
@@ -392,7 +391,7 @@ class RedeemView extends GetView<RedeemController> {
                       controller.futurecatalogueModel.value.data?.length ?? 0,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     mainAxisExtent: 400,
-                    crossAxisCount: width < 500
+                    crossAxisCount: width < 800
                         ? 2
                         : width < 800
                             ? 3
@@ -495,8 +494,8 @@ class CustomList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
-          width: size.width * 0.015,
-          height: size.height * 0.001,
+          //  width: Get.width * 0.015,
+          //  height: Get.height * 0.1,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6), color: Colors.white),
           child: Column(
@@ -588,8 +587,8 @@ class CustomList extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
                             child: Container(
-                                height: size.height * 0.05,
-                                width: size.width * 0.07,
+                                //    height: size.height * 0.05,
+                                // width: size.width * 0.07,
                                 decoration: BoxDecoration(
                                   color: Color(0xFFE018EE0),
                                   borderRadius: BorderRadius.circular(6),

@@ -15,13 +15,13 @@ class PastEnquiryView extends GetView<PastEnquiryController> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 100,
+        toolbarHeight: Get.height * 0.15,
         title: Image(
           image: AssetImage(
             'images/asset/mainlogo.png',
           ),
-          height: 64,
-          width: 148,
+          height: Get.height * 0.15,
+          width: Get.width * 0.1,
         ),
         actions: [
           Container(
@@ -85,7 +85,7 @@ class PastEnquiryView extends GetView<PastEnquiryController> {
             backgroundColor: Colors.white,
             padding: EdgeInsets.all(4),
             alignment: Alignment.topRight,
-            offset: Offset(3, 0),
+            offset: Offset(-22, -2),
             isLabelVisible: true,
             textStyle: TextStyle(
               fontWeight: FontWeight.w700,
@@ -94,8 +94,8 @@ class PastEnquiryView extends GetView<PastEnquiryController> {
             ),
             textColor: Colors.black,
             child: Container(
-              height: 50,
-              width: 50,
+              height: Get.height * 0.07,
+              width: Get.width * 0.07,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: const Color(0xff55B3EA),
@@ -211,14 +211,14 @@ class CustomGrid extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            height: 55,
-            width: 500,
+            height: Get.height * 0.06,
+            width: Get.width * 0.5,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(top: Radius.circular(6)),
               color: Color(0xff018EE0),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(8.0),
               child: RichText(
                   text: TextSpan(
                       text: 'Enquiry :',
@@ -237,8 +237,8 @@ class CustomGrid extends StatelessWidget {
             ),
           ),
           Container(
-            height: 152,
-            width: 500,
+            height: Get.height * 0.15,
+            width: Get.width * 0.5,
             color: Colors.white,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -315,8 +315,8 @@ class CustomGrid extends StatelessWidget {
             ),
           ),
           Container(
-            height: 53,
-            width: 500,
+            height: Get.height * 0.05,
+            width: Get.width * 0.5,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(bottom: Radius.circular(6)),
               color: Color(0xffE5F5FF),

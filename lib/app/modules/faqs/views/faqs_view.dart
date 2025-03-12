@@ -15,13 +15,13 @@ class FaqsView extends GetView<FaqsController> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 100,
+        toolbarHeight: Get.height * 0.15,
         title: Image(
           image: AssetImage(
             'images/asset/mainlogo.png',
           ),
-          height: 64,
-          width: 148,
+          height: Get.height * 0.15,
+          width: Get.width * 0.1,
         ),
         actions: [
           Container(
@@ -85,7 +85,7 @@ class FaqsView extends GetView<FaqsController> {
             backgroundColor: Colors.white,
             padding: EdgeInsets.all(4),
             alignment: Alignment.topRight,
-            offset: Offset(3, 0),
+            offset: Offset(-22, -2),
             isLabelVisible: true,
             textStyle: TextStyle(
               fontWeight: FontWeight.w700,
@@ -94,8 +94,8 @@ class FaqsView extends GetView<FaqsController> {
             ),
             textColor: Colors.black,
             child: Container(
-              height: 50,
-              width: 50,
+              height: Get.height * 0.07,
+              width: Get.width * 0.07,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: const Color(0xff55B3EA),
