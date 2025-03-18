@@ -276,27 +276,21 @@ class LeaderboardView extends GetView<LeaderboardController> {
               containerlist(),
               GestureDetector(
                 onTap: () {},
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Container(
-                      decoration: BoxDecoration(
-                          color: Color(0xFFFFFFFF),
-                          borderRadius: BorderRadius.circular(6),
-                          border: Border.all(color: Color(0xffF3888C))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Center(
-                          child: Text(
-                            'Continue',
-                            style: TextStyle(
-                                fontFamily: 'Schyler',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xffF3888C)),
-                          ),
-                        ),
-                      )),
-                ),
+                child: Container(
+                    padding: EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF),
+                        borderRadius: BorderRadius.circular(6),
+                        border: Border.all(color: Color(0xffF3888C))),
+                    child: Center(
+                      child: Text(
+                        'Continue',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xffF3888C)),
+                      ),
+                    )),
               ),
             ],
           ),
@@ -533,4 +527,14 @@ class InwardArrowPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+Vivek() {
+  return PageView(
+    children: [
+      Container(color: Colors.red, child: Center(child: Text("Slide 1"))),
+      Container(color: Colors.green, child: Center(child: Text("Slide 2"))),
+      Container(color: Colors.blue, child: Center(child: Text("Slide 3"))),
+    ],
+  );
 }

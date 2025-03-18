@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -21,7 +22,11 @@ class RewardsView extends GetView<RewardsController> {
         'images/asset/logo3.png', 'Order/Points History', Routes.HISTORY),
     CustomCardData('images/asset/logo4.png', 'Help & Support', Routes.SUPPORT),
   ];
-
+  final List<String> images = [
+    'images/asset/Super.jpg',
+    'images/asset/Super.jpg',
+    'images/asset/Super.jpg',
+  ];
   // final List<CustomListData> arrlist = [
   //   CustomListData(
   //       'images/asset/toaster.jpg',
@@ -231,23 +236,7 @@ class RewardsView extends GetView<RewardsController> {
                         ],
                       ),
                     ),
-                    Center(
-                      child: Container(
-                        height: size.height * 0.6,
-                        width: size.width * 0.9,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6),
-                          shape: BoxShape.rectangle,
-                          image: DecorationImage(
-                            image: AssetImage(
-                              'images/asset/Super.jpg',
-                            ),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                    ),
-
+                    carouselView(),
                     Padding(
                       padding: const EdgeInsets.all(14.0),
                       child: Row(
@@ -628,6 +617,34 @@ class RewardsView extends GetView<RewardsController> {
             }),
           ),
         ));
+  }
+
+  carouselView() {
+    return Center(
+      child: CarouselSlider(
+        options: CarouselOptions(
+          height: Get.height * 0.55,
+          autoPlay: true,
+          enlargeCenterPage: true,
+          aspectRatio: 16 / 9,
+          autoPlayInterval: Duration(seconds: 3),
+          autoPlayCurve: Curves.easeInOut,
+          enableInfiniteScroll: true,
+          viewportFraction: 0.8,
+        ),
+        items: images.map((imagePath) {
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(6),
+              image: DecorationImage(
+                image: AssetImage(imagePath),
+                fit: BoxFit.cover,
+              ),
+            ),
+          );
+        }).toList(),
+      ),
+    );
   }
 }
 
