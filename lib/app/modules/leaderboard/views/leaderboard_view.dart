@@ -528,13 +528,3 @@ class InwardArrowPainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
-
-Vivek() {
-  return PageView(
-    children: [
-      Container(color: Colors.red, child: Center(child: Text("Slide 1"))),
-      Container(color: Colors.green, child: Center(child: Text("Slide 2"))),
-      Container(color: Colors.blue, child: Center(child: Text("Slide 3"))),
-    ],
-  );
-}
