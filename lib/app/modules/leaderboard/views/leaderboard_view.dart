@@ -12,7 +12,12 @@ class LeaderboardView extends GetView<LeaderboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(Get.find<RewardsController>()),
+      appBar: customAppBar(
+        Get.isRegistered<RewardsController>()
+            ? Get.find<RewardsController>()
+            : Get.put(RewardsController(),
+                permanent: true), // Registers and returns the controller
+      ),
       backgroundColor: const Color.fromARGB(255, 228, 240, 247),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
@@ -174,24 +179,24 @@ class LeaderboardView extends GetView<LeaderboardController> {
               containerlist(),
               containerlist(),
               containerlist(),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                    padding: EdgeInsets.all(14),
-                    decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF),
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(color: Color(0xffF3888C))),
-                    child: Center(
-                      child: Text(
-                        'Continue',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xffF3888C)),
-                      ),
-                    )),
-              ),
+              // GestureDetector(
+              //   onTap: () {},
+              //   child: Container(
+              //       padding: EdgeInsets.all(14),
+              //       decoration: BoxDecoration(
+              //           color: Color(0xFFFFFFFF),
+              //           borderRadius: BorderRadius.circular(6),
+              //           border: Border.all(color: Color(0xffF3888C))),
+              //       child: Center(
+              //         child: Text(
+              //           'Continue',
+              //           style: TextStyle(
+              //               fontSize: 18,
+              //               fontWeight: FontWeight.w500,
+              //               color: Color(0xffF3888C)),
+              //         ),
+              //       )),
+              // ),
             ],
           ),
         ),

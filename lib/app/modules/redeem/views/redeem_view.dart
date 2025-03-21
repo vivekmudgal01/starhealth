@@ -38,7 +38,7 @@ class RedeemView extends GetView<RedeemController> {
         child: Column(
           children: [
             Container(
-              height: Get.height * 0.04,
+              height: Get.height * 0.08,
               //  width: 310,
               color: Colors.lightBlue,
               child: Row(
@@ -71,68 +71,69 @@ class RedeemView extends GetView<RedeemController> {
             SizedBox(
               height: 50,
             ),
+
             Row(
+              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    // Toggle the index between 0 and 1 to swap colors
-                    controller.changeIndex();
-                  },
-                  child: Obx(() {
-                    // Blue for index 0, Green for index 1
-                    return Container(
-                      height: Get.height * 0.04,
-                      width: Get.width * 0.06,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.horizontal(left: Radius.circular(6)),
-                        color: controller.index.value == 0
-                            ? Colors.blue
-                            : Colors.grey,
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Category",
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
+                Expanded(
+                  child: Obx(() => GestureDetector(
+                      onTap: () {
+                        // Toggle the index between 0 and 1 to swap colors
+                        controller.changeIndex();
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(left: 20),
+                        height: Get.height * 0.08,
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.horizontal(left: Radius.circular(6)),
+                          color: controller.index.value == 0
+                              ? Colors.blue
+                              : Colors.grey,
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Category",
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }),
+                      ))),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    // Toggle the index between 0 and 1 to swap colors
-                    controller.changeIndex();
-                  },
-                  child: Obx(() {
-                    // Grey for index 0, Orange for index 1
-                    return Container(
-                      height: Get.height * 0.04,
-                      width: Get.width * 0.06,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.horizontal(right: Radius.circular(6)),
-                        color: controller.index.value == 0
-                            ? Colors.grey
-                            : Colors.blue,
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Points",
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
+                Obx(
+                  () => Expanded(
+                    child: GestureDetector(
+                        onTap: () {
+                          // Toggle the index between 0 and 1 to swap colors
+                          controller.changeIndex();
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(right: 20),
+                          height: Get.height * 0.08,
+                          width: Get.width * 0.06,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.horizontal(
+                                right: Radius.circular(6)),
+                            color: controller.index.value == 0
+                                ? Colors.grey
+                                : Colors.blue,
                           ),
-                        ),
-                      ),
-                    );
-                  }),
+                          child: Center(
+                            child: Text(
+                              "Points",
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        )),
+                  ),
                 ),
               ],
             ),
@@ -144,10 +145,13 @@ class RedeemView extends GetView<RedeemController> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    controller.selectedFilter.value = [];
+                    controller.selectedFilter1.value = [];
+                  },
                   child: Container(
-                    height: Get.height * 0.04,
-                    width: Get.width * 0.06,
+                    height: Get.height * 0.06,
+                    width: Get.width * 0.08,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6),
                         color: Colors.transparent,
@@ -168,8 +172,8 @@ class RedeemView extends GetView<RedeemController> {
                     CheckboxWidget1();
                   },
                   child: Container(
-                    height: Get.height * 0.04,
-                    width: Get.width * 0.06,
+                    height: Get.height * 0.06,
+                    width: Get.width * 0.08,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6),
                         color: Colors.blue),
@@ -189,7 +193,12 @@ class RedeemView extends GetView<RedeemController> {
           ],
         ),
       ),
-      appBar: customAppBar(Get.find<RewardsController>()),
+      appBar: customAppBar(
+        Get.isRegistered<RewardsController>()
+            ? Get.find<RewardsController>()
+            : Get.put(RewardsController(),
+                permanent: true), // Registers and returns the controller
+      ),
       backgroundColor: const Color.fromARGB(255, 228, 240, 247),
       body: Center(
         child: Padding(
@@ -537,10 +546,19 @@ class CheckboxWidget1 extends GetView<RedeemController> {
                   color: Colors.black,
                 ),
               ),
-              value: controller.texts[index]["value"],
+              value: controller.selectedFilter
+                  .contains(controller.texts[index]["site"]),
               onChanged: (bool? value) {
-                controller.texts[index]["value"] = value ?? false;
-                controller.texts.refresh(); // Notify UI of state change
+                if (controller.selectedFilter
+                    .contains(controller.texts[index]["site"])) {
+                  controller.selectedFilter
+                      .remove(controller.texts[index]["site"]);
+                } else {
+                  controller.selectedFilter
+                      .add(controller.texts[index]["site"]);
+                }
+                // controller.texts[index]["value"] = value ?? false;
+                // controller.texts.refresh(); // Notify UI of state change
               },
             ),
           ),
@@ -570,10 +588,19 @@ class CheckboxWidget2 extends GetView<RedeemController> {
                   color: Colors.black,
                 ),
               ),
-              value: controller.Points[index]["value"],
+              value: controller.selectedFilter1
+                  .contains(controller.Points[index]["points"]),
               onChanged: (bool? value) {
-                controller.Points[index]["value"] = value ?? false;
-                controller.Points.refresh(); // Notify UI of state change
+                if (controller.selectedFilter1
+                    .contains(controller.Points[index]["points"])) {
+                  controller.selectedFilter1
+                      .remove(controller.Points[index]["points"]);
+                } else {
+                  controller.selectedFilter1
+                      .add(controller.Points[index]["points"]);
+                }
+                // controller.Points[index]["value"] = value ?? false;
+                // controller.Points.refresh(); // Notify UI of state change
               },
             ),
           ),

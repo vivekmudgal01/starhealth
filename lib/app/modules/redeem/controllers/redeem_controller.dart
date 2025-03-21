@@ -9,61 +9,49 @@ class RedeemController extends GetxController {
   ];
   var futurecatalogueModel = CatalogueModel().obs;
   var isLoaded = false.obs;
+  RxList<String> selectedFilter = <String>[].obs;
 
   RxList texts = [
     {
-      "value": true,
       "site": "Accessories",
     },
     {
-      "value": false,
       "site": "Home Appliances",
     },
     {
-      "value": false,
       "site": "E-Voucher",
     },
     {
-      "value": false,
       "site": "Automobiles",
     },
     {
-      "value": false,
       "site": "Fashion Accessories",
     },
     {
-      "value": false,
       "site": "Personal Care",
     },
   ].obs;
-
+  RxList<String> selectedFilter1 = <String>[].obs;
   RxList Points = [
     {
-      "value": false,
       "points": "0-250",
     },
     {
-      "value": false,
       "points": "250-500",
     },
     {
-      "value": false,
       "points": "500-1000",
     },
     {
-      "value": false,
       "points": "1000-1500",
     },
     {
-      "value": false,
       "points": "1500-2000",
     },
     {
-      "value": false,
       "points": "2000-6000",
     },
     {
-      "value": false,
       "points": ">6000",
     },
   ].obs;

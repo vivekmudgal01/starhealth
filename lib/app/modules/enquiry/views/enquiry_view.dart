@@ -15,7 +15,12 @@ class EnquiryView extends GetView<EnquiryController> {
     double height = size.height;
     double width = size.width;
     return Scaffold(
-      appBar: customAppBar(Get.find<RewardsController>()),
+      appBar: customAppBar(
+        Get.isRegistered<RewardsController>()
+            ? Get.find<RewardsController>()
+            : Get.put(RewardsController(),
+                permanent: true), // Registers and returns the controller
+      ),
       backgroundColor: const Color.fromARGB(255, 228, 240, 247),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),

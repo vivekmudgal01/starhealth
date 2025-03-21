@@ -15,7 +15,12 @@ class PastEnquiryView extends GetView<PastEnquiryController> {
     double height = size.height;
     double width = size.width;
     return Scaffold(
-      appBar: customAppBar(Get.find<RewardsController>()),
+      appBar: customAppBar(
+        Get.isRegistered<RewardsController>()
+            ? Get.find<RewardsController>()
+            : Get.put(RewardsController(),
+                permanent: true), // Registers and returns the controller
+      ),
       backgroundColor: const Color.fromARGB(255, 228, 240, 247),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
@@ -48,13 +53,15 @@ class PastEnquiryView extends GetView<PastEnquiryController> {
               child: GridView.builder(
                 padding: EdgeInsets.zero,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, // Number of columns
-                  childAspectRatio: 3 / 1.95,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                ),
+                    mainAxisExtent: 280,
+                    crossAxisCount: width < 850
+                        ? 2
+                        : width < 1200
+                            ? 3
+                            : 3,
+                    childAspectRatio: 3 / 5),
 
-                itemCount: 12, // Specify a valid itemCount
+                // Specify a valid itemCount
                 itemBuilder: (context, index) {
                   return CustomGrid(
                     data: CustomGridData(

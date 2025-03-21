@@ -16,7 +16,12 @@ class SupportView extends GetView<SupportController> {
     double height = size.height;
     double width = size.width;
     return Scaffold(
-      appBar: customAppBar(Get.find<RewardsController>()),
+      appBar: customAppBar(
+        Get.isRegistered<RewardsController>()
+            ? Get.find<RewardsController>()
+            : Get.put(RewardsController(),
+                permanent: true), // Registers and returns the controller
+      ),
       backgroundColor: const Color.fromARGB(255, 228, 240, 247),
       body: Center(
         child: Padding(
