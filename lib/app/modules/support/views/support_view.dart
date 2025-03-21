@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:star_health/app/modules/rewards/controllers/rewards_controller.dart';
+import 'package:star_health/app/modules/rewards/views/rewards_view.dart';
 import 'package:star_health/app/routes/app_pages.dart';
 
 import '../controllers/support_controller.dart';
@@ -14,109 +16,7 @@ class SupportView extends GetView<SupportController> {
     double height = size.height;
     double width = size.width;
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        toolbarHeight: Get.height * 0.15,
-        title: Image(
-          image: AssetImage(
-            'images/asset/mainlogo.png',
-          ),
-          height: Get.height * 0.15,
-          width: Get.width * 0.1,
-        ),
-        actions: [
-          Container(
-            height: Get.height * 0.09,
-            width: Get.width * 0.08,
-            padding: EdgeInsets.symmetric(horizontal: 4),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: const Color(0xff55B3EA)),
-            child: Row(
-              spacing: 10,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Obx(
-                      () => controller.isLoaded.value
-                          ? Padding(
-                              padding: const EdgeInsets.only(top: 8),
-                              child: Text(
-                                (controller.futurecatalogueModel.value?.data
-                                            ?.isNotEmpty ??
-                                        false)
-                                    ? controller.futurecatalogueModel.value!
-                                        .data![2].pricePoints
-                                        .toString()
-                                    : "",
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            )
-                          : CircularProgressIndicator(),
-                    ),
-                    Text(
-                      'Points',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
-                          height: 0.5),
-                    ),
-                  ],
-                ),
-                Image(
-                  image: AssetImage('images/asset/StarPoint.png'),
-                  fit: BoxFit.contain,
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Badge.count(
-            count: 2,
-            largeSize: 18,
-            backgroundColor: Colors.white,
-            padding: EdgeInsets.all(4),
-            alignment: Alignment.topRight,
-            offset: Offset(-22, -2),
-            isLabelVisible: true,
-            textStyle: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 13,
-              color: Colors.white,
-            ),
-            textColor: Colors.black,
-            child: Container(
-              height: Get.height * 0.07,
-              width: Get.width * 0.07,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: const Color(0xff55B3EA),
-              ),
-              padding: EdgeInsets.all(5),
-              child: Center(
-                child: Icon(
-                  Icons.notifications_none,
-                  color: Colors.white,
-                  size: 35,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            width: 30,
-          )
-        ],
-        backgroundColor: Color(0xFF018EE0),
-      ),
+      appBar: customAppBar(Get.find<RewardsController>()),
       backgroundColor: const Color.fromARGB(255, 228, 240, 247),
       body: Center(
         child: Padding(

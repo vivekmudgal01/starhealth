@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:star_health/app/modules/redeem/views/redeem_view.dart';
 import 'package:star_health/app/routes/app_pages.dart';
 import 'package:star_health/models/catalogueModel.dart';
 import 'package:star_health/services/remote_services.dart';
@@ -60,109 +61,7 @@ class RewardsView extends GetView<RewardsController> {
     double height = size.height;
     double width = size.width;
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          toolbarHeight: Get.height * 0.15,
-          title: Image(
-            image: AssetImage(
-              'images/asset/mainlogo.png',
-            ),
-            height: Get.height * 0.15,
-            width: Get.width * 0.1,
-          ),
-          actions: [
-            Container(
-              height: Get.height * 0.09,
-              width: Get.width * 0.08,
-              padding: EdgeInsets.symmetric(horizontal: 4),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: const Color(0xff55B3EA)),
-              child: Row(
-                spacing: 10,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Obx(
-                        () => controller.isLoaded.value
-                            ? Padding(
-                                padding: const EdgeInsets.only(top: 8),
-                                child: Text(
-                                  (controller.futurecatalogueModel.value?.data
-                                              ?.isNotEmpty ??
-                                          false)
-                                      ? controller.futurecatalogueModel.value!
-                                          .data![2].pricePoints
-                                          .toString()
-                                      : "",
-                                  style: TextStyle(
-                                    fontSize: 24,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              )
-                            : CircularProgressIndicator(),
-                      ),
-                      Text(
-                        'Points',
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white,
-                            height: 0.5),
-                      ),
-                    ],
-                  ),
-                  Image(
-                    image: AssetImage('images/asset/StarPoint.png'),
-                    fit: BoxFit.contain,
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              width: 20,
-            ),
-            Badge.count(
-              count: 2,
-              largeSize: 18,
-              backgroundColor: Colors.white,
-              padding: EdgeInsets.all(4),
-              alignment: Alignment.topRight,
-              offset: Offset(-22, -2),
-              isLabelVisible: true,
-              textStyle: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 13,
-                color: Colors.white,
-              ),
-              textColor: Colors.black,
-              child: Container(
-                height: Get.height * 0.07,
-                width: Get.width * 0.07,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: const Color(0xff55B3EA),
-                ),
-                padding: EdgeInsets.all(5),
-                child: Center(
-                  child: Icon(
-                    Icons.notifications_none,
-                    color: Colors.white,
-                    size: 35,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              width: 30,
-            )
-          ],
-          backgroundColor: Color(0xFF018EE0),
-        ),
+        appBar: customAppBar(Get.find<RewardsController>()),
         backgroundColor: const Color.fromARGB(255, 228, 240, 247),
         body: Center(
           child: Padding(
@@ -238,7 +137,7 @@ class RewardsView extends GetView<RewardsController> {
                     ),
                     carouselView(),
                     Padding(
-                      padding: const EdgeInsets.all(14.0),
+                      padding: const EdgeInsets.symmetric(vertical: 14),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -445,7 +344,6 @@ class RewardsView extends GetView<RewardsController> {
                         ],
                       ),
                     ),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -483,15 +381,6 @@ class RewardsView extends GetView<RewardsController> {
                             }),
                       ],
                     ),
-                    // Expanded(
-                    //   child: ListView.builder(
-                    //       scrollDirection: Axis.horizontal,
-                    //       itemCount: 4,
-                    //       itemBuilder: (BuildContext context, int index) {
-                    //         return CustomCard(data: list[index], onTap: () {});
-                    //       }),
-                    // )
-
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 30, horizontal: 8),
@@ -503,114 +392,62 @@ class RewardsView extends GetView<RewardsController> {
                             color: Colors.black),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Obx(
-                          () => controller.isLoaded.value
-                              ? CustomList(
-                                  data: CustomListData(
-                                    controller.futurecatalogueModel.value
-                                            .data?[0].mainImage ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[0].productName ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[0].shortDescription ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[0].mrp
-                                            ?.toString() ??
-                                        '',
-                                    '${controller.futurecatalogueModel.value.data?[0].subCategoryId ?? ''} more points to claim', // Replace `someField` with the correct field
-                                  ),
-                                  onTap: () {
-                                    Get.toNamed(Routes.PRODUCT ?? '');
-                                  },
-                                )
-                              : CircularProgressIndicator(),
-                        ),
-                        Obx(
-                          () => controller.isLoaded.value
-                              ? CustomList(
-                                  data: CustomListData(
-                                    controller.futurecatalogueModel.value
-                                            .data?[1].mainImage ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[1].productName ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[1].shortDescription ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[1].mrp
-                                            ?.toString() ??
-                                        '',
-                                    '${controller.futurecatalogueModel.value.data?[1].subCategoryId ?? ''} more points to claim', // Replace `someField` with the correct field
-                                  ),
-                                  onTap: () {},
-                                )
-                              : CircularProgressIndicator(),
-                        ),
-                        Obx(
-                          () => controller.isLoaded.value
-                              ? CustomList(
-                                  data: CustomListData(
-                                    controller.futurecatalogueModel.value
-                                            .data?[2].mainImage ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[2].productName ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[2].shortDescription ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[2].mrp
-                                            ?.toString() ??
-                                        '',
-                                    '${controller.futurecatalogueModel.value.data?[2].subCategoryId ?? ''} more points to claim', // Replace `someField` with the correct field
-                                  ),
-                                  onTap: () {},
-                                )
-                              : CircularProgressIndicator(),
-                        ),
-                        Obx(
-                          () => controller.isLoaded.value
-                              ? CustomList(
-                                  data: CustomListData(
-                                    controller.futurecatalogueModel.value
-                                            .data?[3].mainImage ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[3].productName ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[3].shortDescription ??
-                                        '',
-                                    controller.futurecatalogueModel.value
-                                            .data?[3].mrp
-                                            ?.toString() ??
-                                        '',
-                                    '${controller.futurecatalogueModel.value.data?[3].subCategoryId ?? ''} more points to claim',
-                                  ),
-                                  onTap: () {},
-                                )
-                              : CircularProgressIndicator(),
-                        ),
-                      ],
-                    ),
-                    //   Expanded(
-                    //     child: ListView.builder(
-                    //         padding: EdgeInsets.only(left: 40),
-                    //         scrollDirection: Axis.horizontal,
-                    //         itemCount: 4,
-                    //         itemBuilder: (BuildContext context, int index) {
-                    //           return CustomList(data: arrlist[index], onTap: () {});
-                    //         }),
-                    //   )
+                    Obx(() {
+                      final width = MediaQuery.of(context).size.width;
+                      final controller = Get.find<
+                          RewardsController>(); // Ensure controller is initialized
+
+                      if (controller.futurecatalogueModel.value.data == null) {
+                        return const Center(
+                            child:
+                                CircularProgressIndicator()); // Handle loading state
+                      }
+
+                      return GridView.builder(
+                        shrinkWrap: true, // Important for placing inside Column
+                        physics:
+                            NeverScrollableScrollPhysics(), // Prevents nested scrolling
+                        padding: const EdgeInsets.all(8.0),
+                        itemCount: (controller.futurecatalogueModel.value.data
+                                        ?.length ??
+                                    0) >=
+                                4
+                            ? 4
+                            : controller
+                                .futurecatalogueModel.value.data?.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            mainAxisExtent: 400,
+                            crossAxisCount: width < 850
+                                ? 2
+                                : width < 1200
+                                    ? 3
+                                    : width > 1200
+                                        ? 4
+                                        : 4,
+                            childAspectRatio: 3 / 5),
+                        itemBuilder: (context, index) {
+                          var data = controller
+                              .futurecatalogueModel.value.data?[index];
+
+                          if (data == null) {
+                            return const SizedBox(); // Prevents breaking in case of a null entry
+                          }
+                          return CustomList(
+                            data: CustomListData(
+                              data.mainImage ?? '',
+                              data.productName ?? '',
+                              data.shortDescription ?? '',
+                              data.mrp?.toString() ?? '',
+                              data.subCategoryName ?? '',
+                              data.productName ?? '',
+                            ),
+                            onTap: () {
+                              Get.toNamed(Routes.PRODUCT, arguments: data);
+                            },
+                          );
+                        },
+                      );
+                    }),
                   ],
                 ),
               );
@@ -702,174 +539,108 @@ class CustomCard extends StatelessWidget {
   }
 }
 
-///  List  data model------------------------------------------------------------
-
-class CustomListData {
-  final String imageUrl;
-  final String title;
-  final String subtitle;
-  final String price;
-  final String actionBox;
-
-  CustomListData(
-    this.imageUrl,
-    this.title,
-    this.subtitle,
-    this.price,
-    this.actionBox,
-  );
-}
-
-class CustomList extends StatelessWidget {
-  CustomList({
-    super.key,
-    required this.data,
-    required this.onTap,
-  });
-
-  final CustomListData data;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    double height = size.height;
-    double width = size.width;
-    return Container(
-        width: size.width * 0.2,
+customAppBar(RewardsController controller) {
+  return AppBar(
+    automaticallyImplyLeading: false,
+    toolbarHeight: Get.height * 0.15,
+    title: Image(
+      image: AssetImage(
+        'images/asset/mainlogo.png',
+      ),
+      height: Get.height * 0.15,
+      width: Get.width * 0.1,
+    ),
+    actions: [
+      Container(
+        height: Get.height * 0.09,
+        width: Get.width * 0.08,
+        padding: EdgeInsets.symmetric(horizontal: 4),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6), color: Colors.white),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.end,
+            borderRadius: BorderRadius.circular(50),
+            color: const Color(0xff55B3EA)),
+        child: Row(
+          spacing: 10,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Container(
-                    width: size.width * 0.015,
-                    height: size.width * 0.015,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6),
-                        color: const Color.fromARGB(255, 232, 242, 250)),
-                    child: Image(
-                      image: AssetImage(
-                        'images/asset/Notification.png',
-                      ),
-                      // height: 20,
-                      // width: 20,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
+                Obx(
+                  () => controller.isLoaded.value
+                      ? Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Text(
+                            (controller.futurecatalogueModel.value?.data
+                                        ?.isNotEmpty ??
+                                    false)
+                                ? controller.futurecatalogueModel.value!
+                                    .data![2].pricePoints
+                                    .toString()
+                                : "",
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        )
+                      : CircularProgressIndicator(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Container(
-                    height: size.height * 0.03,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6),
-                        color: const Color.fromARGB(255, 232, 242, 250)),
-                    child: Text(
-                      data.actionBox,
-                      style: TextStyle(fontSize: 16, color: Colors.black54),
-                    ),
-                  ),
+                Text(
+                  'Points',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                      height: 0.5),
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Image.network(
-                        data.imageUrl,
-                        fit: BoxFit.contain,
-                        height: size.height * 0.15,
-                        width: size.width * 0.15,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12),
-                    child: Text(
-                      data.title,
-                      style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                      maxLines: 1,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12),
-                    child: Text(
-                      data.subtitle,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black54,
-                      ),
-                      maxLines: 2,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: RichText(
-                          text: TextSpan(
-                              text: data.price ?? '',
-                              style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold),
-                              children: <TextSpan>[
-                                TextSpan(text: ' '),
-                                TextSpan(
-                                    text: 'Pts',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w600))
-                              ]),
-                        ),
-                      ),
-                      SizedBox(),
-                      GestureDetector(
-                        onTap: onTap,
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Container(
-                              height: size.height * 0.05,
-                              width: size.width * 0.07,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFE018EE0),
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Center(
-                                  child: Text(
-                                    'Redeem Now',
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white),
-                                  ),
-                                ),
-                              )),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            Image(
+              image: AssetImage('images/asset/StarPoint.png'),
+              fit: BoxFit.contain,
+            )
           ],
-        ));
-  }
+        ),
+      ),
+      SizedBox(
+        width: 20,
+      ),
+      Badge.count(
+        count: 2,
+        largeSize: 18,
+        backgroundColor: Colors.white,
+        padding: EdgeInsets.all(4),
+        alignment: Alignment.topRight,
+        offset: Offset(-22, -2),
+        isLabelVisible: true,
+        textStyle: TextStyle(
+          fontWeight: FontWeight.w700,
+          fontSize: 13,
+          color: Colors.white,
+        ),
+        textColor: Colors.black,
+        child: Container(
+          height: Get.height * 0.07,
+          width: Get.width * 0.07,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: const Color(0xff55B3EA),
+          ),
+          padding: EdgeInsets.all(5),
+          child: Center(
+            child: Icon(
+              Icons.notifications_none,
+              color: Colors.white,
+              size: 35,
+            ),
+          ),
+        ),
+      ),
+      SizedBox(
+        width: 30,
+      )
+    ],
+    backgroundColor: Color(0xFF018EE0),
+  );
 }
