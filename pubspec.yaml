@@ -40,6 +40,11 @@ dependencies:
   file_picker: ^9.0.2
   url_launcher: ^6.3.1
   carousel_slider: ^5.0.0
+  
+  just_audio: ^0.9.46
+   
+  
+  path_provider: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -63,7 +68,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - images/asset/
+    - assets/images/
+    - assets/audio/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

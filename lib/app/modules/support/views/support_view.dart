@@ -106,7 +106,7 @@ class SupportView extends GetView<SupportController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Image.asset('images/asset/faqs.png',
+                                Image.asset('assets/images/faqs.png',
                                     height: 50),
                                 Text(
                                   'FAQs',
@@ -156,7 +156,7 @@ class SupportView extends GetView<SupportController> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  Image.asset('images/asset/writeus.png',
+                                  Image.asset('assets/images/writeus.png',
                                       height: 50),
                                   Text(
                                     'Write Us',
@@ -206,7 +206,7 @@ class SupportView extends GetView<SupportController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Image.asset('images/asset/enquiry.png',
+                                Image.asset('assets/images/enquiry.png',
                                     height: 50),
                                 Text(
                                   'Enquiry Now',

@@ -1,8 +1,12 @@
 import 'package:get/get.dart';
+import 'package:star_health/app/routes/app_pages.dart';
 import 'package:star_health/models/catalogueModel.dart';
 import 'package:star_health/services/remote_services.dart';
 
 class LeaderboardController extends GetxController {
+  final List<AudioPageRoute> homeRoute = [
+    AudioPageRoute(name: 'Audio Page', path: Routes.AUDIOPAGE),
+  ];
   //TODO: Implement LeaderboardController
   // var index = 0.obs;
   var futurecatalogueModel = CatalogueModel().obs;
@@ -39,4 +43,11 @@ class LeaderboardController extends GetxController {
     return "${prefix}${prefix2}";
     //return "${prefix} ${prefix2}";
   }
+}
+
+class AudioPageRoute {
+  final String name;
+  final String path;
+
+  AudioPageRoute({required this.name, required this.path});
 }

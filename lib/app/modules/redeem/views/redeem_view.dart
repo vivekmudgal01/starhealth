@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:get/get.dart';
 import 'package:star_health/app/modules/product/controllers/product_controller.dart';
@@ -12,7 +13,7 @@ class RedeemView extends GetView<RedeemController> {
   RedeemView({super.key});
   final List<CustomListData> arrlist = [
     CustomListData(
-        'images/asset/toaster.jpg',
+        'assets/images/toaster.jpg',
         'Toaster',
         'Starter moter child parts \n(Service Kits)',
         '2200',
@@ -200,176 +201,334 @@ class RedeemView extends GetView<RedeemController> {
                 permanent: true), // Registers and returns the controller
       ),
       backgroundColor: const Color.fromARGB(255, 228, 240, 247),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            SizedBox(
-              height: size.height * 0.07,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, Routes.REWARDS);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios_new_sharp,
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        'Redeem Catalogue',
-                        style: TextStyle(
-                            fontSize: 24,
-                            color: Color(0xFFE4F4F4F),
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                    width: 10,
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        height: Get.height * 0.06,
-                        width: Get.width * 0.3,
-                        child: TextField(
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(6)),
-                              filled: true,
-                              //   enabled: false,
-                              fillColor: Colors.white,
-                              labelText: 'Search here',
-                              prefixIcon: Icon(Icons.search)),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                        width: 10,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          _scaffoldKey.currentState!.openEndDrawer();
-                        },
-                        child: Container(
-                          //   height: 50,
-                          //  width: 50,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(6)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Image(
-                              image: AssetImage(
-                                'images/asset/setings.png',
+      body: LayoutBuilder(builder: (context, Constraints) {
+        if (Constraints.maxWidth > 900) {
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: size.height * 0.07,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(context, Routes.REWARDS);
+                                },
+                                child: Icon(
+                                  Icons.arrow_back_ios_new_sharp,
+                                  color: Colors.black,
+                                ),
                               ),
-                              fit: BoxFit.contain,
-                            ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Text(
+                                'Redeem Catalogue',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Color(0xFFE4F4F4F),
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ],
                           ),
+                          SizedBox(
+                            height: 10,
+                            width: 10,
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                height: Get.height * 0.06,
+                                width: Get.width * 0.3,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(6)),
+                                      filled: true,
+                                      //   enabled: false,
+                                      fillColor: Colors.white,
+                                      labelText: 'Search here',
+                                      prefixIcon: Icon(Icons.search)),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  _scaffoldKey.currentState!.openEndDrawer();
+                                },
+                                child: Container(
+                                  //   height: 50,
+                                  //  width: 50,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(6)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12.0),
+                                    child: Image(
+                                      image: AssetImage(
+                                        'assets/images/setings.png',
+                                      ),
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Obx(() {
+                      final width = MediaQuery.of(context).size.width;
+                      final controller = Get.find<
+                          RedeemController>(); // Ensure controller is initialized
+
+                      if (controller.futurecatalogueModel.value.data == null) {
+                        return const Center(
+                            child:
+                                CircularProgressIndicator()); // Handle loading state
+                      }
+
+                      return Expanded(
+                        child: GridView.builder(
+                          padding: const EdgeInsets.all(8.0),
+                          itemCount: controller
+                                  .futurecatalogueModel.value.data?.length ??
+                              0,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  mainAxisExtent: 400,
+                                  crossAxisCount: width < 670
+                                      ? 1
+                                      : width < 940
+                                          ? 2
+                                          : width < 1200
+                                              ? 3
+                                              : width > 1250
+                                                  ? 4
+                                                  : 4,
+                                  childAspectRatio: 3 / 5),
+                          itemBuilder: (context, index) {
+                            var data = controller
+                                .futurecatalogueModel.value.data?[index];
+
+                            if (data == null) {
+                              return const SizedBox(); // Prevents breaking in case of a null entry
+                            }
+
+                            return CustomList(
+                              data: CustomListData(
+                                data.mainImage ?? '',
+                                data.productName ?? '',
+                                data.shortDescription ?? '',
+                                data.mrp?.toString() ?? '',
+                                data.subCategoryName ?? '',
+                                data.productName ?? '',
+                              ),
+                              onTap: () {
+                                // if (CustomListData.path != null &&
+                                //     CustomListData.path!.isNotEmpty) {
+                                Get.toNamed(Routes.PRODUCT, arguments: data);
+                                // }
+                              },
+                            );
+                          },
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                      );
+                    }),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(18.0),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       CustomList(
+                    //           data: this.arrlist[0],
+                    //           onTap: () {
+                    //             if (arrlist[0].path != null &&
+                    //                 arrlist[0].path!.isNotEmpty) {
+                    //               Get.toNamed(arrlist[0].path ?? '');
+                    //             }
+                    //           }),
+                    //       CustomList(data: this.arrlist[0], onTap: () {}),
+                    //       CustomList(data: this.arrlist[0], onTap: () {}),
+                    //       CustomList(data: this.arrlist[0], onTap: () {}),
+                    //     ],
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(18.0),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       CustomList(data: this.arrlist[0], onTap: () {}),
+                    //       CustomList(data: this.arrlist[0], onTap: () {}),
+                    //       CustomList(data: this.arrlist[0], onTap: () {}),
+                    //       CustomList(data: this.arrlist[0], onTap: () {}),
+                    //     ],
+                    //   ),
+                    // ),
+                  ]),
             ),
-            Obx(() {
-              final width = MediaQuery.of(context).size.width;
-              final controller = Get.find<
-                  RedeemController>(); // Ensure controller is initialized
-
-              if (controller.futurecatalogueModel.value.data == null) {
-                return const Center(
-                    child: CircularProgressIndicator()); // Handle loading state
-              }
-
-              return Expanded(
-                child: GridView.builder(
-                  padding: const EdgeInsets.all(8.0),
-                  itemCount:
-                      controller.futurecatalogueModel.value.data?.length ?? 0,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisExtent: 400,
-                      crossAxisCount: width < 850
-                          ? 2
-                          : width < 1200
-                              ? 3
-                              : width > 1200
-                                  ? 4
-                                  : 4,
-                      childAspectRatio: 3 / 5),
-                  itemBuilder: (context, index) {
-                    var data =
-                        controller.futurecatalogueModel.value.data?[index];
-
-                    if (data == null) {
-                      return const SizedBox(); // Prevents breaking in case of a null entry
-                    }
-
-                    return CustomList(
-                      data: CustomListData(
-                        data.mainImage ?? '',
-                        data.productName ?? '',
-                        data.shortDescription ?? '',
-                        data.mrp?.toString() ?? '',
-                        data.subCategoryName ?? '',
-                        data.productName ?? '',
+          );
+        } else {
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: size.height * 0.04,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(context, Routes.REWARDS);
+                                },
+                                child: Icon(
+                                  Icons.arrow_back_ios_new_sharp,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Redeem Catalogue',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Color(0xFFE4F4F4F),
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5,
+                            width: 5,
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                height: Get.height * 0.04,
+                                width: Get.width * 0.25,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4)),
+                                      filled: true,
+                                      //   enabled: false,
+                                      fillColor: Colors.white,
+                                      labelText: 'Search here',
+                                      prefixIcon: Icon(Icons.search)),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                                width: 5,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  _scaffoldKey.currentState!.openEndDrawer();
+                                },
+                                child: Container(
+                                  //   height: 50,
+                                  //  width: 50,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(6)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image(
+                                      image: AssetImage(
+                                        'assets/images/setings.png',
+                                      ),
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      onTap: () {
-                        // if (CustomListData.path != null &&
-                        //     CustomListData.path!.isNotEmpty) {
-                        Get.toNamed(Routes.PRODUCT, arguments: data);
-                        // }
-                      },
-                    );
-                  },
-                ),
-              );
-            }),
-            // Padding(
-            //   padding: const EdgeInsets.all(18.0),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children: [
-            //       CustomList(
-            //           data: this.arrlist[0],
-            //           onTap: () {
-            //             if (arrlist[0].path != null &&
-            //                 arrlist[0].path!.isNotEmpty) {
-            //               Get.toNamed(arrlist[0].path ?? '');
-            //             }
-            //           }),
-            //       CustomList(data: this.arrlist[0], onTap: () {}),
-            //       CustomList(data: this.arrlist[0], onTap: () {}),
-            //       CustomList(data: this.arrlist[0], onTap: () {}),
-            //     ],
-            //   ),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.all(18.0),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children: [
-            //       CustomList(data: this.arrlist[0], onTap: () {}),
-            //       CustomList(data: this.arrlist[0], onTap: () {}),
-            //       CustomList(data: this.arrlist[0], onTap: () {}),
-            //       CustomList(data: this.arrlist[0], onTap: () {}),
-            //     ],
-            //   ),
-            // ),
-          ]),
-        ),
-      ),
+                    ),
+                    Obx(() {
+                      final width = MediaQuery.of(context).size.width;
+                      final controller = Get.find<
+                          RedeemController>(); // Ensure controller is initialized
+
+                      if (controller.futurecatalogueModel.value.data == null) {
+                        return const Center(
+                            child:
+                                CircularProgressIndicator()); // Handle loading state
+                      }
+
+                      return Expanded(
+                        child: GridView.builder(
+                          padding: const EdgeInsets.all(8.0),
+                          itemCount: controller
+                                  .futurecatalogueModel.value.data?.length ??
+                              0,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  mainAxisExtent: 400,
+                                  crossAxisCount: width < 670
+                                      ? 1
+                                      : width < 940
+                                          ? 2
+                                          : width < 1200
+                                              ? 3
+                                              : width > 1250
+                                                  ? 4
+                                                  : 4,
+                                  childAspectRatio: 3 / 5),
+                          itemBuilder: (context, index) {
+                            var data = controller
+                                .futurecatalogueModel.value.data?[index];
+
+                            if (data == null) {
+                              return const SizedBox(); // Prevents breaking in case of a null entry
+                            }
+
+                            return CustomList(
+                              data: CustomListData(
+                                data.mainImage ?? '',
+                                data.productName ?? '',
+                                data.shortDescription ?? '',
+                                data.mrp?.toString() ?? '',
+                                data.subCategoryName ?? '',
+                                data.productName ?? '',
+                              ),
+                              onTap: () {
+                                // if (CustomListData.path != null &&
+                                //     CustomListData.path!.isNotEmpty) {
+                                Get.toNamed(Routes.PRODUCT, arguments: data);
+                                // }
+                              },
+                            );
+                          },
+                        ),
+                      );
+                    }),
+                  ]),
+            ),
+          );
+        }
+      }),
     );
   }
 }
@@ -443,8 +602,8 @@ class CustomList extends StatelessWidget {
                         child: Image.network(
                           data.imageUrl,
                           fit: BoxFit.contain,
-                          height: size.height * 0.15,
-                          width: size.width * 0.15,
+                          height: 150,
+                          width: 150,
                         ),
                       ),
                     ),
@@ -492,6 +651,8 @@ class CustomList extends StatelessWidget {
                           ),
                         ),
                         SizedBox(),
+                        Container(),
+                        Card(),
                         GestureDetector(
                           onTap: onTap,
                           child: Padding(

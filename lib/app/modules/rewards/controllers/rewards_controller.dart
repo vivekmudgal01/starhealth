@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:star_health/app/routes/app_pages.dart';
 import 'package:star_health/models/catalogueModel.dart';
 import 'package:star_health/services/remote_services.dart';
+import 'package:http/http.dart' as http;
+import 'dart:developer';
 
 class RewardsController extends GetxController {
   //TODO: Implement RewardsController
@@ -47,6 +52,37 @@ class RewardsController extends GetxController {
     futurecatalogueModel.value = await RemoteServices.fetchcataloguemodel();
     if (futurecatalogueModel.value.status ?? false) {
       isLoaded.value = true;
+    }
+  }
+
+  var isDownloading = false.obs; // Observable variable for UI updates
+
+  Future<void> downloadFile(String fileUrl) async {
+    isDownloading(true); // Start downloading
+
+    try {
+      var response = await http.get(Uri.parse(
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flower_jtca001.jpg/1024px-Flower_jtca001.jpg'));
+
+      print(response.statusCode);
+
+      if (response.statusCode == 200) {
+        Directory directory = await getApplicationDocumentsDirectory();
+        String fileName = fileUrl.split('/').last;
+        String filePath = "${directory.path}/$fileName";
+
+        File file = File(filePath);
+        await file.writeAsBytes(response.bodyBytes);
+
+        Get.snackbar("Download Complete", "File saved at $filePath");
+      } else {
+        throw Exception("Download failed");
+      }
+    } catch (e) {
+      log(e.toString());
+      Get.snackbar("Error", "Download failed: $e");
+    } finally {
+      isDownloading(false); // Stop downloading
     }
   }
 }

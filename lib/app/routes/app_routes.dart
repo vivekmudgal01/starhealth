@@ -13,6 +13,7 @@ abstract class Routes {
   static const PAST_ENQUIRY = _Paths.PAST_ENQUIRY;
   static const HISTORY = _Paths.HISTORY;
   static const LEADERBOARD = _Paths.LEADERBOARD;
+  static const AUDIOPAGE = _Paths.AUDIOPAGE;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const PAST_ENQUIRY = '/past-enquiry';
   static const HISTORY = '/history';
   static const LEADERBOARD = '/leaderboard';
+  static const AUDIOPAGE = '/audiopage';
 }

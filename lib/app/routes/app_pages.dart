@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/Audiopage/bindings/audiopage_binding.dart';
+import '../modules/Audiopage/views/audiopage_view.dart';
 import '../modules/enquiry/bindings/enquiry_binding.dart';
 import '../modules/enquiry/views/enquiry_view.dart';
 import '../modules/faqs/bindings/faqs_binding.dart';
@@ -86,6 +88,11 @@ class AppPages {
       name: _Paths.LEADERBOARD,
       page: () => const LeaderboardView(),
       binding: LeaderboardBinding(),
+    ),
+    GetPage(
+      name: _Paths.AUDIOPAGE,
+      page: () => const AudiopageView(),
+      binding: AudiopageBinding(),
     ),
   ];
 }

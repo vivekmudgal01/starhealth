@@ -74,7 +74,7 @@ class HomeView extends GetView<HomeController> {
           toolbarHeight: 100,
           title: Image(
             image: AssetImage(
-              'images/asset/mainlogo.png',
+              'assets/images/mainlogo.png',
             ),
             fit: BoxFit.cover,
           ),
