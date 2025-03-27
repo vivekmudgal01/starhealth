@@ -275,317 +275,327 @@ class ProductView extends GetView<ProductController> {
     Size size = MediaQuery.of(context).size;
     double height = size.height;
     double width = size.width;
-    return Scaffold(
-      appBar: customAppBar(
-        Get.isRegistered<RewardsController>()
-            ? Get.find<RewardsController>()
-            : Get.put(RewardsController(),
-                permanent: true), // Registers and returns the controller
-      ),
-      backgroundColor: const Color.fromARGB(255, 228, 240, 247),
-      body: LayoutBuilder(builder: (context, Constraints) {
-        if (Constraints.maxWidth > 1150) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.REDEEM);
-                      },
-                      child: Icon(
-                        Icons.arrow_back_ios_new_sharp,
-                        color: Colors.black,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      'Product Details',
-                      style: TextStyle(
-                          fontSize: 24,
-                          color: Color(0xFFE4F4F4F),
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return SafeArea(
+      child: Scaffold(
+        appBar: customAppBar(
+          Get.isRegistered<RewardsController>()
+              ? Get.find<RewardsController>()
+              : Get.put(RewardsController(),
+                  permanent: true), // Registers and returns the controller
+        ),
+        backgroundColor: const Color.fromARGB(255, 228, 240, 247),
+        body: LayoutBuilder(builder: (context, Constraints) {
+          if (Constraints.maxWidth > 1150) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
                     children: [
-                      Obx(
-                        () => Container(
-                          height: 370,
-                          width: 560,
-                          color: Colors.white,
-                          child: Image.network(
-                            controller.futurecatalogueModel.value.data?[0]
-                                    .mainImage ??
-                                '',
-                          ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.REDEEM);
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios_new_sharp,
+                          color: Colors.black,
                         ),
                       ),
-                      Obx(
-                        () => Container(
-                          height: 370,
-                          width: 420,
-                          color: const Color.fromARGB(255, 228, 240, 247),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                controller.futurecatalogueModel.value.data?[0]
-                                        .productName ??
-                                    '',
-                                style: TextStyle(
-                                    fontSize: 34, fontWeight: FontWeight.w700),
-                              ),
-                              RichText(
-                                text: TextSpan(
-                                    text:
-                                        '${controller.futurecatalogueModel.value.data?[0].pricePoints.toString() ?? ''} Points',
-                                    style: TextStyle(
-                                        fontSize: 34,
-                                        fontWeight: FontWeight.w700),
-                                    children: [
-                                      TextSpan(text: '       '),
-                                      TextSpan(
-                                        text: '(Product Code : 009988)',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400),
-                                      )
-                                    ]),
-                              ),
-                              Text(
-                                'Description',
-                                style: TextStyle(
-                                    fontSize: 22, fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                controller.futurecatalogueModel.value.data?[0]
-                                        .shortDescription ??
-                                    '',
-                              ),
-                              Row(
-                                children: [
-                                  Container(
-                                    width: size.width * 0.015,
-                                    height: size.width * 0.015,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(6),
-                                        color: const Color.fromARGB(
-                                            255, 232, 242, 250)),
-                                    child: Image(
-                                      image: AssetImage(
-                                        'assets/images/Notification.png',
-                                      ),
-                                      // height: 20,
-                                      // width: 20,
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
-                                  Container(
-                                    height: size.height * 0.03,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(6),
-                                        color: Colors.white),
-                                    child: Text(
-                                      'You are ${controller.futurecatalogueModel.value.data?[0].subCategoryId.toString() ?? ''} Points away from availing this Product ',
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        'Product Details',
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Color(0xFFE4F4F4F),
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Obx(
+                          () => Container(
+                            height: 370,
+                            width: 560,
+                            color: Colors.white,
+                            child: Image.network(
+                              controller.futurecatalogueModel.value.data?[0]
+                                      .mainImage ??
+                                  '',
+                            ),
+                          ),
+                        ),
+                        Obx(
+                          () => Container(
+                            height: 370,
+                            width: 420,
+                            color: const Color.fromARGB(255, 228, 240, 247),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  controller.futurecatalogueModel.value.data?[0]
+                                          .productName ??
+                                      '',
+                                  style: TextStyle(
+                                      fontSize: 34,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                                RichText(
+                                  text: TextSpan(
+                                      text:
+                                          '${controller.futurecatalogueModel.value.data?[0].pricePoints.toString() ?? ''} Points',
                                       style: TextStyle(
-                                          fontSize: 16, color: Colors.black54),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              GestureDetector(
-                                onTap: () => _dialogBuilder(context),
-                                child: Container(
-                                    height: 40,
-                                    width: 420,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFFE018EE0),
-                                      borderRadius: BorderRadius.circular(6),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: Center(
-                                        child: Text(
-                                          'Redeem',
+                                          fontSize: 34,
+                                          fontWeight: FontWeight.w700),
+                                      children: [
+                                        TextSpan(text: '       '),
+                                        TextSpan(
+                                          text: '(Product Code : 009988)',
                                           style: TextStyle(
                                               fontSize: 16,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    )),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        } else {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 11),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.REDEEM);
-                      },
-                      child: Icon(
-                        Icons.arrow_back_ios_new_sharp,
-                        color: Colors.black,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      'Product Details',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Color(0xFFE4F4F4F),
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Obx(
-                        () => Container(
-                          //  height: 370,
-                          //  width: 560,
-                          color: Colors.white,
-                          child: Image.network(
-                            controller.futurecatalogueModel.value.data?[0]
-                                    .mainImage ??
-                                '',
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Obx(
-                  () => Container(
-                    height: 370,
-                    width: 420,
-                    color: const Color.fromARGB(255, 228, 240, 247),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          controller.futurecatalogueModel.value.data?[0]
-                                  .productName ??
-                              '',
-                          style: TextStyle(
-                              fontSize: 34, fontWeight: FontWeight.w700),
-                        ),
-                        RichText(
-                          text: TextSpan(
-                              text:
-                                  '${controller.futurecatalogueModel.value.data?[0].pricePoints.toString() ?? ''} Points',
-                              style: TextStyle(
-                                  fontSize: 34, fontWeight: FontWeight.w700),
-                              children: [
-                                TextSpan(text: '       '),
-                                TextSpan(
-                                  text: '(Product Code : 009988)',
+                                              fontWeight: FontWeight.w400),
+                                        )
+                                      ]),
+                                ),
+                                Text(
+                                  'Description',
                                   style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400),
-                                )
-                              ]),
-                        ),
-                        Text(
-                          'Description',
-                          style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.w600),
-                        ),
-                        Text(
-                          controller.futurecatalogueModel.value.data?[0]
-                                  .shortDescription ??
-                              '',
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              width: size.width * 0.015,
-                              height: size.width * 0.015,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6),
-                                  color:
-                                      const Color.fromARGB(255, 232, 242, 250)),
-                              child: Image(
-                                image: AssetImage(
-                                  'assets/images/Notification.png',
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w600),
                                 ),
-                                // height: 20,
-                                // width: 20,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            Container(
-                              height: size.height * 0.03,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6),
-                                  color: Colors.white),
-                              child: Text(
-                                'You are ${controller.futurecatalogueModel.value.data?[0].subCategoryId.toString() ?? ''} Points away from availing this Product ',
-                                style: TextStyle(
-                                    fontSize: 16, color: Colors.black54),
-                              ),
-                            ),
-                          ],
-                        ),
-                        GestureDetector(
-                          onTap: () => _dialogBuilder(context),
-                          child: Container(
-                              height: 40,
-                              width: 420,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFE018EE0),
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Center(
-                                  child: Text(
-                                    'Redeem',
-                                    style: TextStyle(
-                                        fontSize: 16, color: Colors.white),
-                                  ),
+                                Text(
+                                  controller.futurecatalogueModel.value.data?[0]
+                                          .shortDescription ??
+                                      '',
                                 ),
-                              )),
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: size.width * 0.015,
+                                      height: size.width * 0.015,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          color: const Color.fromARGB(
+                                              255, 232, 242, 250)),
+                                      child: Image(
+                                        image: AssetImage(
+                                          'assets/images/Notification.png',
+                                        ),
+                                        // height: 20,
+                                        // width: 20,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                    Container(
+                                      height: size.height * 0.03,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          color: Colors.white),
+                                      child: Text(
+                                        'You are ${controller.futurecatalogueModel.value.data?[0].subCategoryId.toString() ?? ''} Points away from availing this Product ',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.black54),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                GestureDetector(
+                                  onTap: () => _dialogBuilder(context),
+                                  child: Container(
+                                      height: 40,
+                                      width: 420,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFFE018EE0),
+                                        borderRadius: BorderRadius.circular(6),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Center(
+                                          child: Text(
+                                            'Redeem',
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
                   ),
-                ),
-              ],
-            ),
-          );
-        }
-      }),
+                ],
+              ),
+            );
+          } else {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 11),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.REDEEM);
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios_new_sharp,
+                          color: Colors.black,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        'Product Details',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xFFE4F4F4F),
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Obx(
+                          () => Container(
+                            //  height: 370,
+                            width: 350,
+                            color: Colors.white,
+                            child: Image.network(
+                              controller.futurecatalogueModel.value.data?[0]
+                                      .mainImage ??
+                                  '',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Obx(
+                    () => Container(
+                      height: 370,
+                      width: 420,
+                      color: const Color.fromARGB(255, 228, 240, 247),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.futurecatalogueModel.value.data?[0]
+                                    .productName ??
+                                '',
+                            style: TextStyle(
+                                fontSize: 34, fontWeight: FontWeight.w700),
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                text:
+                                    '${controller.futurecatalogueModel.value.data?[0].pricePoints.toString() ?? ''} Points',
+                                style: TextStyle(
+                                    fontSize: 34,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black),
+                                children: [
+                                  TextSpan(text: '       '),
+                                  TextSpan(
+                                    text: '(Product Code : 009988)',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.black),
+                                  )
+                                ]),
+                          ),
+                          Text(
+                            'Description',
+                            style: TextStyle(
+                                fontSize: 22, fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            controller.futurecatalogueModel.value.data?[0]
+                                    .shortDescription ??
+                                '',
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: size.width * 0.015,
+                                height: size.width * 0.015,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6),
+                                    color: const Color.fromARGB(
+                                        255, 232, 242, 250)),
+                                child: Image(
+                                  image: AssetImage(
+                                    'assets/images/Notification.png',
+                                  ),
+                                  // height: 20,
+                                  // width: 20,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              Container(
+                                height: size.height * 0.03,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6),
+                                    color: Colors.white),
+                                child: Text(
+                                  'You are ${controller.futurecatalogueModel.value.data?[0].subCategoryId.toString() ?? ''} Points away from availing this Product ',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.black54),
+                                ),
+                              ),
+                            ],
+                          ),
+                          GestureDetector(
+                            onTap: () => _dialogBuilder(context),
+                            child: Container(
+                                height: 40,
+                                width: 420,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFE018EE0),
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Center(
+                                    child: Text(
+                                      'Redeem',
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.white),
+                                    ),
+                                  ),
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+        }),
+      ),
     );
   }
 }

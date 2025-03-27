@@ -10,51 +10,53 @@ class AudiopageView extends GetView<AudiopageController> {
   const AudiopageView({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: customAppBar(
-        Get.isRegistered<RewardsController>()
-            ? Get.find<RewardsController>()
-            : Get.put(RewardsController(),
-                permanent: true), // Registers and returns the controller
-      ),
-      backgroundColor: const Color.fromARGB(255, 228, 240, 247),
-      body: Center(
-          child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, Routes.LEADERBOARD);
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios_new_sharp,
-                      color: Colors.black,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    'Audio',
-                    style: TextStyle(
-                        fontSize: 24,
-                        color: Color(0xFFE4F4F4F),
-                        fontWeight: FontWeight.w600),
-                  ),
-                ],
-              ),
-              Column(
-                children: List.generate(
-                    audioUrls.length, (index) => customAudio(index, audioUrls)),
-              )
-            ],
-          ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: customAppBar(
+          Get.isRegistered<RewardsController>()
+              ? Get.find<RewardsController>()
+              : Get.put(RewardsController(),
+                  permanent: true), // Registers and returns the controller
         ),
-      )),
+        backgroundColor: const Color.fromARGB(255, 228, 240, 247),
+        body: Center(
+            child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.LEADERBOARD);
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios_new_sharp,
+                        color: Colors.black,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      'Audio',
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: Color(0xFFE4F4F4F),
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: List.generate(audioUrls.length,
+                      (index) => customAudio(index, audioUrls)),
+                )
+              ],
+            ),
+          ),
+        )),
+      ),
     );
   }
 }

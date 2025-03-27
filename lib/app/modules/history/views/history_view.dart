@@ -12,255 +12,257 @@ class HistoryView extends GetView<HistoryController> {
   const HistoryView({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: customAppBar(
-        Get.isRegistered<RewardsController>()
-            ? Get.find<RewardsController>()
-            : Get.put(RewardsController(),
-                permanent: true), // Registers and returns the controller
+    return SafeArea(
+      child: Scaffold(
+        appBar: customAppBar(
+          Get.isRegistered<RewardsController>()
+              ? Get.find<RewardsController>()
+              : Get.put(RewardsController(),
+                  permanent: true), // Registers and returns the controller
+        ),
+        backgroundColor: const Color.fromARGB(255, 228, 240, 247),
+        body: LayoutBuilder(builder: (context, Constraints) {
+          if (Constraints.maxWidth > 900) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
+              child: SingleChildScrollView(
+                child: Column(
+                  spacing: 5,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, Routes.REWARDS);
+                          },
+                          child: Icon(
+                            Icons.arrow_back_ios_new_sharp,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          'History',
+                          style: TextStyle(
+                              fontSize: 24,
+                              color: Color(0xFFE4F4F4F),
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              top: 12,
+                              left: 18,
+                            ),
+                            child: GestureDetector(
+                              onTap: () {
+                                // Toggle the index between 0 and 1 to swap colors
+                                controller.changeIndex();
+                              },
+                              child: Obx(() {
+                                // Blue for index 0, Green for index 1
+                                return Container(
+                                  height: Get.height * 0.1,
+                                  //   width: Get.width / 2.3,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.horizontal(
+                                        left: Radius.circular(6)),
+                                    color: controller.index.value == 0
+                                        ? Colors.blue
+                                        : Colors.grey,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Order History",
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 12, right: 18),
+                            child: GestureDetector(
+                              onTap: () {
+                                // Toggle the index between 0 and 1 to swap colors
+                                controller.changeIndex();
+                              },
+                              child: Obx(() {
+                                // Grey for index 0, Orange for index 1
+                                return Container(
+                                  height: Get.height * 0.1,
+                                  //   width: Get.width / 2.3,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.horizontal(
+                                        right: Radius.circular(6)),
+                                    color: controller.index.value == 0
+                                        ? Colors.grey
+                                        : Colors.blue,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Points History",
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Obx(() => controller.index.value == 0
+                        ? CheckboxWidget1()
+                        : SizedBox()),
+                    Obx(() => controller.index.value == 1
+                        ? CheckboxWidget2()
+                        : SizedBox()),
+                  ],
+                ),
+              ),
+            );
+          } else {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
+              child: SingleChildScrollView(
+                child: Column(
+                  spacing: 5,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, Routes.REWARDS);
+                          },
+                          child: Icon(
+                            Icons.arrow_back_ios_new_sharp,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          'History',
+                          style: TextStyle(
+                              fontSize: 24,
+                              color: Color(0xFFE4F4F4F),
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              top: 12,
+                              left: 18,
+                            ),
+                            child: GestureDetector(
+                              onTap: () {
+                                // Toggle the index between 0 and 1 to swap colors
+                                controller.changeIndex();
+                              },
+                              child: Obx(() {
+                                // Blue for index 0, Green for index 1
+                                return Container(
+                                  height: Get.height * 0.1,
+                                  //   width: Get.width / 2.3,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.horizontal(
+                                        left: Radius.circular(6)),
+                                    color: controller.index.value == 0
+                                        ? Colors.blue
+                                        : Colors.grey,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Order History",
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 12, right: 18),
+                            child: GestureDetector(
+                              onTap: () {
+                                // Toggle the index between 0 and 1 to swap colors
+                                controller.changeIndex();
+                              },
+                              child: Obx(() {
+                                // Grey for index 0, Orange for index 1
+                                return Container(
+                                  height: Get.height * 0.1,
+                                  //   width: Get.width / 2.3,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.horizontal(
+                                        right: Radius.circular(6)),
+                                    color: controller.index.value == 0
+                                        ? Colors.grey
+                                        : Colors.blue,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Points History",
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Obx(() => controller.index.value == 0
+                        ? CheckboxWidget1()
+                        : SizedBox()),
+                    Obx(() => controller.index.value == 1
+                        ? CheckboxWidget2()
+                        : SizedBox()),
+                  ],
+                ),
+              ),
+            );
+          }
+        }),
       ),
-      backgroundColor: const Color.fromARGB(255, 228, 240, 247),
-      body: LayoutBuilder(builder: (context, Constraints) {
-        if (Constraints.maxWidth > 900) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
-            child: SingleChildScrollView(
-              child: Column(
-                spacing: 5,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, Routes.REWARDS);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios_new_sharp,
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        'History',
-                        style: TextStyle(
-                            fontSize: 24,
-                            color: Color(0xFFE4F4F4F),
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            top: 12,
-                            left: 18,
-                          ),
-                          child: GestureDetector(
-                            onTap: () {
-                              // Toggle the index between 0 and 1 to swap colors
-                              controller.changeIndex();
-                            },
-                            child: Obx(() {
-                              // Blue for index 0, Green for index 1
-                              return Container(
-                                height: Get.height * 0.1,
-                                //   width: Get.width / 2.3,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.horizontal(
-                                      left: Radius.circular(6)),
-                                  color: controller.index.value == 0
-                                      ? Colors.blue
-                                      : Colors.grey,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "Order History",
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 12, right: 18),
-                          child: GestureDetector(
-                            onTap: () {
-                              // Toggle the index between 0 and 1 to swap colors
-                              controller.changeIndex();
-                            },
-                            child: Obx(() {
-                              // Grey for index 0, Orange for index 1
-                              return Container(
-                                height: Get.height * 0.1,
-                                //   width: Get.width / 2.3,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.horizontal(
-                                      right: Radius.circular(6)),
-                                  color: controller.index.value == 0
-                                      ? Colors.grey
-                                      : Colors.blue,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "Points History",
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Obx(() => controller.index.value == 0
-                      ? CheckboxWidget1()
-                      : SizedBox()),
-                  Obx(() => controller.index.value == 1
-                      ? CheckboxWidget2()
-                      : SizedBox()),
-                ],
-              ),
-            ),
-          );
-        } else {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
-            child: SingleChildScrollView(
-              child: Column(
-                spacing: 5,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, Routes.REWARDS);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios_new_sharp,
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        'History',
-                        style: TextStyle(
-                            fontSize: 24,
-                            color: Color(0xFFE4F4F4F),
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            top: 12,
-                            left: 18,
-                          ),
-                          child: GestureDetector(
-                            onTap: () {
-                              // Toggle the index between 0 and 1 to swap colors
-                              controller.changeIndex();
-                            },
-                            child: Obx(() {
-                              // Blue for index 0, Green for index 1
-                              return Container(
-                                height: Get.height * 0.1,
-                                //   width: Get.width / 2.3,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.horizontal(
-                                      left: Radius.circular(6)),
-                                  color: controller.index.value == 0
-                                      ? Colors.blue
-                                      : Colors.grey,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "Order History",
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 12, right: 18),
-                          child: GestureDetector(
-                            onTap: () {
-                              // Toggle the index between 0 and 1 to swap colors
-                              controller.changeIndex();
-                            },
-                            child: Obx(() {
-                              // Grey for index 0, Orange for index 1
-                              return Container(
-                                height: Get.height * 0.1,
-                                //   width: Get.width / 2.3,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.horizontal(
-                                      right: Radius.circular(6)),
-                                  color: controller.index.value == 0
-                                      ? Colors.grey
-                                      : Colors.blue,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "Points History",
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Obx(() => controller.index.value == 0
-                      ? CheckboxWidget1()
-                      : SizedBox()),
-                  Obx(() => controller.index.value == 1
-                      ? CheckboxWidget2()
-                      : SizedBox()),
-                ],
-              ),
-            ),
-          );
-        }
-      }),
     );
   }
 }

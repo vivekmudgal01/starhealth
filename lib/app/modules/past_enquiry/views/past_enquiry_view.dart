@@ -15,135 +15,137 @@ class PastEnquiryView extends GetView<PastEnquiryController> {
     Size size = MediaQuery.of(context).size;
     double height = size.height;
     double width = size.width;
-    return Scaffold(
-      appBar: customAppBar(
-        Get.isRegistered<RewardsController>()
-            ? Get.find<RewardsController>()
-            : Get.put(RewardsController(),
-                permanent: true), // Registers and returns the controller
+    return SafeArea(
+      child: Scaffold(
+        appBar: customAppBar(
+          Get.isRegistered<RewardsController>()
+              ? Get.find<RewardsController>()
+              : Get.put(RewardsController(),
+                  permanent: true), // Registers and returns the controller
+        ),
+        backgroundColor: const Color.fromARGB(255, 228, 240, 247),
+        body: LayoutBuilder(builder: (context, Constraints) {
+          if (Constraints.maxWidth > 680) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.ENQUIRY);
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios_new_sharp,
+                          color: Colors.black,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        'Past Enquiry',
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Color(0xFFE4F4F4F),
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: GridView.builder(
+                      padding: EdgeInsets.zero, itemCount: 12,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisExtent: 280,
+                          crossAxisCount: width < 500
+                              ? 1
+                              : width < 950
+                                  ? 2
+                                  : width < 1200
+                                      ? 3
+                                      : 3,
+                          childAspectRatio: 3 / 5),
+
+                      // Specify a valid itemCount
+                      itemBuilder: (context, index) {
+                        return CustomGrid(
+                          data: CustomGridData(
+                            '#SH977078',
+                            'Reviewing',
+                            '12-12-2024',
+                            '06:09pm',
+                          ),
+                          onTap: () {},
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
+            );
+          } else {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 9),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.ENQUIRY);
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios_new_sharp,
+                          color: Colors.black,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        'Past Enquiry',
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Color(0xFFE4F4F4F),
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: GridView.builder(
+                      padding: EdgeInsets.zero, itemCount: 12,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisExtent: 250,
+                          crossAxisCount: width < 700
+                              ? 1
+                              : width < 950
+                                  ? 2
+                                  : width < 1200
+                                      ? 3
+                                      : 3,
+                          childAspectRatio: 3 / 5),
+
+                      // Specify a valid itemCount
+                      itemBuilder: (context, index) {
+                        return CustomGridMobile(
+                          data: CustomGridData(
+                            '#SH977078',
+                            'Reviewing',
+                            '12-12-2024',
+                            '06:09pm',
+                          ),
+                          onTap: () {},
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
+            );
+          }
+        }),
       ),
-      backgroundColor: const Color.fromARGB(255, 228, 240, 247),
-      body: LayoutBuilder(builder: (context, Constraints) {
-        if (Constraints.maxWidth > 680) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.ENQUIRY);
-                      },
-                      child: Icon(
-                        Icons.arrow_back_ios_new_sharp,
-                        color: Colors.black,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      'Past Enquiry',
-                      style: TextStyle(
-                          fontSize: 24,
-                          color: Color(0xFFE4F4F4F),
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: GridView.builder(
-                    padding: EdgeInsets.zero, itemCount: 12,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisExtent: 280,
-                        crossAxisCount: width < 500
-                            ? 1
-                            : width < 950
-                                ? 2
-                                : width < 1200
-                                    ? 3
-                                    : 3,
-                        childAspectRatio: 3 / 5),
-
-                    // Specify a valid itemCount
-                    itemBuilder: (context, index) {
-                      return CustomGrid(
-                        data: CustomGridData(
-                          '#SH977078',
-                          'Reviewing',
-                          '12-12-2024',
-                          '06:09pm',
-                        ),
-                        onTap: () {},
-                      );
-                    },
-                  ),
-                )
-              ],
-            ),
-          );
-        } else {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 9),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.ENQUIRY);
-                      },
-                      child: Icon(
-                        Icons.arrow_back_ios_new_sharp,
-                        color: Colors.black,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      'Past Enquiry',
-                      style: TextStyle(
-                          fontSize: 24,
-                          color: Color(0xFFE4F4F4F),
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: GridView.builder(
-                    padding: EdgeInsets.zero, itemCount: 12,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisExtent: 250,
-                        crossAxisCount: width < 700
-                            ? 1
-                            : width < 950
-                                ? 2
-                                : width < 1200
-                                    ? 3
-                                    : 3,
-                        childAspectRatio: 3 / 5),
-
-                    // Specify a valid itemCount
-                    itemBuilder: (context, index) {
-                      return CustomGridMobile(
-                        data: CustomGridData(
-                          '#SH977078',
-                          'Reviewing',
-                          '12-12-2024',
-                          '06:09pm',
-                        ),
-                        onTap: () {},
-                      );
-                    },
-                  ),
-                )
-              ],
-            ),
-          );
-        }
-      }),
     );
   }
 }

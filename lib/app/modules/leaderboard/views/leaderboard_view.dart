@@ -12,394 +12,398 @@ class LeaderboardView extends GetView<LeaderboardController> {
   const LeaderboardView({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: customAppBar(
-        Get.isRegistered<RewardsController>()
-            ? Get.find<RewardsController>()
-            : Get.put(RewardsController(),
-                permanent: true), // Registers and returns the controller
+    return SafeArea(
+      child: Scaffold(
+        appBar: customAppBar(
+          Get.isRegistered<RewardsController>()
+              ? Get.find<RewardsController>()
+              : Get.put(RewardsController(),
+                  permanent: true), // Registers and returns the controller
+        ),
+        backgroundColor: const Color.fromARGB(255, 228, 240, 247),
+        body: LayoutBuilder(builder: (context, Constraints) {
+          if (Constraints.maxWidth > 740) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, Routes.REWARDS);
+                          },
+                          child: Icon(
+                            Icons.arrow_back_ios_new_sharp,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          'Leaderboard',
+                          style: TextStyle(
+                              fontSize: 24,
+                              color: Color(0xFFE4F4F4F),
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          child: Column(
+                            children: [
+                              Text(
+                                '2',
+                                style: TextStyle(
+                                    fontSize: 24, fontWeight: FontWeight.w600),
+                              ),
+                              Image(
+                                image: AssetImage('assets/images/2ndp.png'),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Harsh Mandal',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff018EE0)),
+                                ),
+                              ),
+                              RichText(
+                                  text: TextSpan(
+                                      text: '256651455',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xff018EE0)),
+                                      children: [
+                                    TextSpan(text: '  '),
+                                    TextSpan(
+                                        text: 'Pts',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xff808080)))
+                                  ]))
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          child: Column(
+                            children: [
+                              Text(
+                                '1',
+                                style: TextStyle(
+                                    fontSize: 24, fontWeight: FontWeight.w600),
+                              ),
+                              Image(
+                                  image: AssetImage('assets/images/1stp.png')),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Arjun Kapoor',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff018EE0)),
+                                ),
+                              ),
+                              RichText(
+                                  text: TextSpan(
+                                      text: '256651455',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xff018EE0)),
+                                      children: [
+                                    TextSpan(text: '  '),
+                                    TextSpan(
+                                        text: 'Pts',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xff808080)))
+                                  ]))
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          child: Column(
+                            children: [
+                              Text(
+                                '3',
+                                style: TextStyle(
+                                    fontSize: 24, fontWeight: FontWeight.w600),
+                              ),
+                              Image(
+                                  image: AssetImage('assets/images/2ndp.png')),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Karan Verma',
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff018EE0)),
+                                ),
+                              ),
+                              RichText(
+                                  text: TextSpan(
+                                      text: '256651455',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xff018EE0)),
+                                      children: [
+                                    TextSpan(text: '  '),
+                                    TextSpan(
+                                        text: 'Pts',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xff808080)))
+                                  ]))
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    containerlist(),
+                    containerlist(),
+                    containerlist(),
+                    containerlist(),
+                    containerlist(),
+                    containerlist(),
+                    containerlist(),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.AUDIOPAGE);
+                      },
+                      child: Container(
+                          padding: EdgeInsets.all(14),
+                          decoration: BoxDecoration(
+                              color: Color(0xFFFFFFFF),
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(color: Color(0xffF3888C))),
+                          child: Center(
+                            child: Text(
+                              'Continue Audio',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xffF3888C)),
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          } else {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 9),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, Routes.REWARDS);
+                          },
+                          child: Icon(
+                            Icons.arrow_back_ios_new_sharp,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          'Leaderboard',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Color(0xFFE4F4F4F),
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 0),
+                          child: Column(
+                            children: [
+                              Text(
+                                '2',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              ),
+                              Image(
+                                image: AssetImage('assets/images/2ndp.png'),
+                                height: Get.height * 0.06,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Harsh Mandal',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff018EE0)),
+                                ),
+                              ),
+                              RichText(
+                                  text: TextSpan(
+                                      text: '256651455',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xff018EE0)),
+                                      children: [
+                                    TextSpan(text: '  '),
+                                    TextSpan(
+                                        text: 'Pts',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xff808080)))
+                                  ]))
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: Column(
+                            children: [
+                              Text(
+                                '1',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              ),
+                              Image(
+                                image: AssetImage('assets/images/1stp.png'),
+                                height: Get.height * 0.08,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Arjun Kapoor',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff018EE0)),
+                                ),
+                              ),
+                              RichText(
+                                  text: TextSpan(
+                                      text: '256651455',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xff018EE0)),
+                                      children: [
+                                    TextSpan(text: '  '),
+                                    TextSpan(
+                                        text: 'Pts',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xff808080)))
+                                  ]))
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: Column(
+                            children: [
+                              Text(
+                                '3',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              ),
+                              Image(
+                                image: AssetImage('assets/images/2ndp.png'),
+                                height: Get.height * 0.06,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Karan Verma',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff018EE0)),
+                                ),
+                              ),
+                              RichText(
+                                  text: TextSpan(
+                                      text: '256651455',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xff018EE0)),
+                                      children: [
+                                    TextSpan(text: '  '),
+                                    TextSpan(
+                                        text: 'Pts',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xff808080)))
+                                  ]))
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    containerlistmobile(),
+                    containerlistmobile(),
+                    containerlistmobile(),
+                    containerlistmobile(),
+                    containerlistmobile(),
+                    containerlistmobile(),
+                    containerlistmobile(),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.AUDIOPAGE);
+                      },
+                      child: Container(
+                          padding: EdgeInsets.all(14),
+                          decoration: BoxDecoration(
+                              color: Color(0xFFFFFFFF),
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(color: Color(0xffF3888C))),
+                          child: Center(
+                            child: Text(
+                              'Continue Audio',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xffF3888C)),
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
+        }),
       ),
-      backgroundColor: const Color.fromARGB(255, 228, 240, 247),
-      body: LayoutBuilder(builder: (context, Constraints) {
-        if (Constraints.maxWidth > 740) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, Routes.REWARDS);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios_new_sharp,
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        'Leaderboard',
-                        style: TextStyle(
-                            fontSize: 24,
-                            color: Color(0xFFE4F4F4F),
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Column(
-                          children: [
-                            Text(
-                              '2',
-                              style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.w600),
-                            ),
-                            Image(
-                              image: AssetImage('assets/images/2ndp.png'),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Harsh Mandal',
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff018EE0)),
-                              ),
-                            ),
-                            RichText(
-                                text: TextSpan(
-                                    text: '256651455',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w700,
-                                        color: Color(0xff018EE0)),
-                                    children: [
-                                  TextSpan(text: '  '),
-                                  TextSpan(
-                                      text: 'Pts',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xff808080)))
-                                ]))
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Column(
-                          children: [
-                            Text(
-                              '1',
-                              style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.w600),
-                            ),
-                            Image(image: AssetImage('assets/images/1stp.png')),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Arjun Kapoor',
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff018EE0)),
-                              ),
-                            ),
-                            RichText(
-                                text: TextSpan(
-                                    text: '256651455',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w700,
-                                        color: Color(0xff018EE0)),
-                                    children: [
-                                  TextSpan(text: '  '),
-                                  TextSpan(
-                                      text: 'Pts',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xff808080)))
-                                ]))
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Column(
-                          children: [
-                            Text(
-                              '3',
-                              style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.w600),
-                            ),
-                            Image(image: AssetImage('assets/images/2ndp.png')),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Karan Verma',
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff018EE0)),
-                              ),
-                            ),
-                            RichText(
-                                text: TextSpan(
-                                    text: '256651455',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w700,
-                                        color: Color(0xff018EE0)),
-                                    children: [
-                                  TextSpan(text: '  '),
-                                  TextSpan(
-                                      text: 'Pts',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xff808080)))
-                                ]))
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  containerlist(),
-                  containerlist(),
-                  containerlist(),
-                  containerlist(),
-                  containerlist(),
-                  containerlist(),
-                  containerlist(),
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routes.AUDIOPAGE);
-                    },
-                    child: Container(
-                        padding: EdgeInsets.all(14),
-                        decoration: BoxDecoration(
-                            color: Color(0xFFFFFFFF),
-                            borderRadius: BorderRadius.circular(6),
-                            border: Border.all(color: Color(0xffF3888C))),
-                        child: Center(
-                          child: Text(
-                            'Continue Audio',
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xffF3888C)),
-                          ),
-                        )),
-                  ),
-                ],
-              ),
-            ),
-          );
-        } else {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 9),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, Routes.REWARDS);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios_new_sharp,
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        'Leaderboard',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Color(0xFFE4F4F4F),
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 0),
-                        child: Column(
-                          children: [
-                            Text(
-                              '2',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w600),
-                            ),
-                            Image(
-                              image: AssetImage('assets/images/2ndp.png'),
-                              height: Get.height * 0.06,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Harsh Mandal',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff018EE0)),
-                              ),
-                            ),
-                            RichText(
-                                text: TextSpan(
-                                    text: '256651455',
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                        color: Color(0xff018EE0)),
-                                    children: [
-                                  TextSpan(text: '  '),
-                                  TextSpan(
-                                      text: 'Pts',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xff808080)))
-                                ]))
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: Column(
-                          children: [
-                            Text(
-                              '1',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w600),
-                            ),
-                            Image(
-                              image: AssetImage('assets/images/1stp.png'),
-                              height: Get.height * 0.08,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Arjun Kapoor',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff018EE0)),
-                              ),
-                            ),
-                            RichText(
-                                text: TextSpan(
-                                    text: '256651455',
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                        color: Color(0xff018EE0)),
-                                    children: [
-                                  TextSpan(text: '  '),
-                                  TextSpan(
-                                      text: 'Pts',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xff808080)))
-                                ]))
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: Column(
-                          children: [
-                            Text(
-                              '3',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w600),
-                            ),
-                            Image(
-                              image: AssetImage('assets/images/2ndp.png'),
-                              height: Get.height * 0.06,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Karan Verma',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff018EE0)),
-                              ),
-                            ),
-                            RichText(
-                                text: TextSpan(
-                                    text: '256651455',
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                        color: Color(0xff018EE0)),
-                                    children: [
-                                  TextSpan(text: '  '),
-                                  TextSpan(
-                                      text: 'Pts',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xff808080)))
-                                ]))
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  containerlistmobile(),
-                  containerlistmobile(),
-                  containerlistmobile(),
-                  containerlistmobile(),
-                  containerlistmobile(),
-                  containerlistmobile(),
-                  containerlistmobile(),
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed(Routes.AUDIOPAGE);
-                    },
-                    child: Container(
-                        padding: EdgeInsets.all(14),
-                        decoration: BoxDecoration(
-                            color: Color(0xFFFFFFFF),
-                            borderRadius: BorderRadius.circular(6),
-                            border: Border.all(color: Color(0xffF3888C))),
-                        child: Center(
-                          child: Text(
-                            'Continue Audio',
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xffF3888C)),
-                          ),
-                        )),
-                  ),
-                ],
-              ),
-            ),
-          );
-        }
-      }),
     );
   }
 

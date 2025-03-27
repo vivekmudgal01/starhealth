@@ -15,95 +15,99 @@ class FaqsView extends GetView<FaqsController> {
     Size size = MediaQuery.of(context).size;
     double height = size.height;
     double width = size.width;
-    return Scaffold(
-      appBar: customAppBar(
-        Get.isRegistered<RewardsController>()
-            ? Get.find<RewardsController>()
-            : Get.put(RewardsController(),
-                permanent: true), // Registers and returns the controller
-      ),
-      backgroundColor: const Color.fromARGB(255, 228, 240, 247),
-      body: Center(
-        child: LayoutBuilder(builder: (context, Constraints) {
-          if (Constraints.maxWidth > 600) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: size.height * 0.07,
-                      child: Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(context, Routes.SUPPORT);
-                            },
-                            child: Icon(
-                              Icons.arrow_back_ios_new_sharp,
-                              color: Colors.black,
+    return SafeArea(
+      child: Scaffold(
+        appBar: customAppBar(
+          Get.isRegistered<RewardsController>()
+              ? Get.find<RewardsController>()
+              : Get.put(RewardsController(),
+                  permanent: true), // Registers and returns the controller
+        ),
+        backgroundColor: const Color.fromARGB(255, 228, 240, 247),
+        body: Center(
+          child: LayoutBuilder(builder: (context, Constraints) {
+            if (Constraints.maxWidth > 600) {
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 61, vertical: 18),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: size.height * 0.07,
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, Routes.SUPPORT);
+                              },
+                              child: Icon(
+                                Icons.arrow_back_ios_new_sharp,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Text(
-                            'FAQs',
-                            style: TextStyle(
-                                fontSize: 24,
-                                color: Color(0xFFE4F4F4F),
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Obx(() =>
-                        controller.index == 0 ? ListWidget() : SizedBox()),
-                  ],
-                ),
-              ),
-            );
-          } else {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 9),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: size.height * 0.07,
-                      child: Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(context, Routes.SUPPORT);
-                            },
-                            child: Icon(
-                              Icons.arrow_back_ios_new_sharp,
-                              color: Colors.black,
+                            SizedBox(
+                              width: 15,
                             ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Text(
-                            'FAQs',
-                            style: TextStyle(
-                                fontSize: 24,
-                                color: Color(0xFFE4F4F4F),
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
+                            Text(
+                              'FAQs',
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  color: Color(0xFFE4F4F4F),
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Obx(() => controller.index == 0
-                        ? ListWidgetmobile()
-                        : SizedBox()),
-                  ],
+                      Obx(() =>
+                          controller.index == 0 ? ListWidget() : SizedBox()),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          }
-        }),
+              );
+            } else {
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 9),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: size.height * 0.07,
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, Routes.SUPPORT);
+                              },
+                              child: Icon(
+                                Icons.arrow_back_ios_new_sharp,
+                                color: Colors.black,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              'FAQs',
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  color: Color(0xFFE4F4F4F),
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Obx(() => controller.index == 0
+                          ? ListWidgetmobile()
+                          : SizedBox()),
+                    ],
+                  ),
+                ),
+              );
+            }
+          }),
+        ),
       ),
     );
   }
