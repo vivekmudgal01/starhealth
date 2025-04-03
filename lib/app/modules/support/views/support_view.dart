@@ -47,7 +47,7 @@ class SupportView extends GetView<SupportController> {
                         width: 15,
                       ),
                       Text(
-                        'Help & Support',
+                        'Help & Support'.tr,
                         style: TextStyle(
                             fontSize: 24,
                             color: Color(0xFFE4F4F4F),
@@ -64,12 +64,12 @@ class SupportView extends GetView<SupportController> {
                     child: Column(
                       children: [
                         Text(
-                          'How Can We \n  Help You?',
+                          'How Can We \n  Help You?'.tr,
                           style: TextStyle(
                               fontSize: 48, fontWeight: FontWeight.w600),
                         ),
                         Text(
-                          'Select An Option Below',
+                          'Select An Option Below'.tr,
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w500,
@@ -111,7 +111,7 @@ class SupportView extends GetView<SupportController> {
                                   Image.asset('assets/images/faqs.png',
                                       height: 50),
                                   Text(
-                                    'FAQs',
+                                    'FAQs'.tr,
                                     style: TextStyle(
                                       fontSize: 28,
                                       fontWeight: FontWeight.w500,
@@ -130,7 +130,9 @@ class SupportView extends GetView<SupportController> {
                         Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
-                              onTap: controller.Open_Email,
+                              onTap: () async {
+                                await controller.Open_Email();
+                              },
                               child: Container(
                                 height: 90,
                                 width: 450,
@@ -161,7 +163,7 @@ class SupportView extends GetView<SupportController> {
                                     Image.asset('assets/images/writeus.png',
                                         height: 50),
                                     Text(
-                                      'Write Us',
+                                      'Write Us'.tr,
                                       style: TextStyle(
                                         fontSize: 28,
                                         fontWeight: FontWeight.w500,
@@ -212,7 +214,7 @@ class SupportView extends GetView<SupportController> {
                                   Image.asset('assets/images/enquiry.png',
                                       height: 50),
                                   Text(
-                                    'Enquiry Now',
+                                    'Enquiry Now'.tr,
                                     style: TextStyle(
                                       fontSize: 28,
                                       fontWeight: FontWeight.w500,

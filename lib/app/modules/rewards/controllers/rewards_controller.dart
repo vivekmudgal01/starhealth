@@ -6,7 +6,7 @@ import 'package:star_health/app/routes/app_pages.dart';
 import 'package:star_health/models/catalogueModel.dart';
 import 'package:star_health/services/remote_services.dart';
 import 'package:http/http.dart' as http;
-import 'dart:developer';
+import 'package:permission_handler/permission_handler.dart';
 
 class RewardsController extends GetxController {
   //TODO: Implement RewardsController
@@ -55,35 +55,56 @@ class RewardsController extends GetxController {
     }
   }
 
-  var isDownloading = false.obs; // Observable variable for UI updates
+  var isDownloading = false.obs; // Observable for UI updates
 
-  Future<void> downloadFile(String fileUrl) async {
+  Future<void> downloadFile() async {
     isDownloading(true); // Start downloading
 
     try {
-      var response = await http.get(Uri.parse(
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flower_jtca001.jpg/1024px-Flower_jtca001.jpg'));
+      // ✅ Google Drive Direct Download Link
+      String fileUrl =
+          "https://drive.google.com/uc?export=download&id=1UkBX36UkPaGuu1MCZe4NuAvKU7buG93H";
 
-      print(response.statusCode);
+      // Request storage permission
+      if (await _requestPermission()) {
+        var response = await http.get(Uri.parse(fileUrl));
 
-      if (response.statusCode == 200) {
-        Directory directory = await getApplicationDocumentsDirectory();
-        String fileName = fileUrl.split('/').last;
-        String filePath = "${directory.path}/$fileName";
+        if (response.statusCode == 200) {
+          // Save in device's Download folder
+          String downloadsPath = "/storage/emulated/0/Download";
 
-        File file = File(filePath);
-        await file.writeAsBytes(response.bodyBytes);
+          // Create the directory if it doesn't exist
+          Directory(downloadsPath).createSync(recursive: true);
 
-        Get.snackbar("Download Complete", "File saved at $filePath");
+          // File Name
+          String filePath =
+              "$downloadsPath/${DateTime.now().microsecondsSinceEpoch.toString().removeAllWhitespace}downloaded_file.pdf";
+
+          // Save the file
+          File file = File(filePath);
+          await file.writeAsBytes(response.bodyBytes);
+
+          Get.snackbar("Download Complete", "File saved at $filePath");
+        } else {
+          throw Exception("Download failed: Server Error");
+        }
       } else {
-        throw Exception("Download failed");
+        Get.snackbar("Permission Denied", "Storage access is required");
       }
     } catch (e) {
-      log(e.toString());
       Get.snackbar("Error", "Download failed: $e");
     } finally {
       isDownloading(false); // Stop downloading
     }
+  }
+
+  // ✅ Request Storage Permission
+  Future<bool> _requestPermission() async {
+    if (Platform.isAndroid) {
+      var status = await Permission.manageExternalStorage.request();
+      return status.isGranted;
+    }
+    return true; // iOS doesn't need this permission
   }
 }
 

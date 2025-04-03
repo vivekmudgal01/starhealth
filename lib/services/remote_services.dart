@@ -51,7 +51,7 @@ class FaqServices {
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
-      throw Exception('Failed to load Product Data');
+      throw Exception('Failed to load faqs Data');
     }
   }
 }
@@ -76,7 +76,7 @@ class EnquiryServices {
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
-      throw Exception('Failed to load Product Data');
+      throw Exception('Failed to load Enquiry Data');
     }
   }
 }
@@ -101,7 +101,7 @@ class UploadServices {
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
-      throw Exception('Failed to load Product Data');
+      throw Exception('Failed to load Upload Data');
     }
   }
 }

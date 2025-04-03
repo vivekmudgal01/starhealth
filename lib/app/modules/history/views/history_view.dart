@@ -45,7 +45,7 @@ class HistoryView extends GetView<HistoryController> {
                           width: 15,
                         ),
                         Text(
-                          'History',
+                          'History'.tr,
                           style: TextStyle(
                               fontSize: 24,
                               color: Color(0xFFE4F4F4F),
@@ -81,7 +81,7 @@ class HistoryView extends GetView<HistoryController> {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      "Order History",
+                                      "Order History".tr,
                                       style: TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.w600,
@@ -116,7 +116,7 @@ class HistoryView extends GetView<HistoryController> {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      "Points History",
+                                      "Points History".tr,
                                       style: TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.w600,
@@ -164,7 +164,7 @@ class HistoryView extends GetView<HistoryController> {
                           width: 15,
                         ),
                         Text(
-                          'History',
+                          'History'.tr,
                           style: TextStyle(
                               fontSize: 24,
                               color: Color(0xFFE4F4F4F),
@@ -200,7 +200,7 @@ class HistoryView extends GetView<HistoryController> {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      "Order History",
+                                      "Order History".tr,
                                       style: TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.w600,
@@ -235,7 +235,7 @@ class HistoryView extends GetView<HistoryController> {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      "Points History",
+                                      "Points History".tr,
                                       style: TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.w600,
@@ -281,7 +281,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(
-                  'Recent Orders',
+                  'Recent Orders'.tr,
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
@@ -328,7 +328,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                     child: Row(
                                       children: [
                                         Text(
-                                          'Product Code :',
+                                          'Product Code :'.tr,
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w400),
@@ -350,7 +350,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Points :',
+                                          'Points :'.tr,
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w400),
@@ -371,13 +371,13 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                     child: Row(
                                       children: [
                                         Text(
-                                          'Status :',
+                                          'Status :'.tr,
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w400),
                                         ),
                                         Text(
-                                          'Delivered',
+                                          'Delivered'.tr,
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w400,
@@ -400,7 +400,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(
-                  'Order History',
+                  'Order History'.tr,
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
@@ -447,7 +447,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              'Product Code :',
+                                              'Product Code :'.tr,
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w400),
@@ -469,7 +469,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              'Points :',
+                                              'Points :'.tr,
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w400),
@@ -490,13 +490,13 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              'Status :',
+                                              'Status :'.tr,
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w400),
                                             ),
                                             Text(
-                                              'Delivered',
+                                              'Delivered'.tr,
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w400,
@@ -525,7 +525,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(
-                  'Recent Orders',
+                  'Recent Orders'.tr,
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
@@ -572,7 +572,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                     child: Row(
                                       children: [
                                         Text(
-                                          'Product Code :',
+                                          'Product Code :'.tr,
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w400),
@@ -594,7 +594,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Points :',
+                                          'Points :'.tr,
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w400),
@@ -615,13 +615,13 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                     child: Row(
                                       children: [
                                         Text(
-                                          'Status :',
+                                          'Status :'.tr,
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w400),
                                         ),
                                         Text(
-                                          'Delivered',
+                                          'Delivered'.tr,
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w400,
@@ -644,7 +644,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(
-                  'Order History',
+                  'Order History'.tr,
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
@@ -691,7 +691,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              'Product Code :',
+                                              'Product Code :'.tr,
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w400),
@@ -713,7 +713,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              'Points :',
+                                              'Points :'.tr,
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w400),
@@ -734,13 +734,13 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              'Status :',
+                                              'Status :'.tr,
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w400),
                                             ),
                                             Text(
-                                              'Delivered',
+                                              'Delivered'.tr,
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w400,
@@ -782,7 +782,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                   padding: EdgeInsets.all(8),
                   child: Center(
                     child: Text(
-                      'Track Order',
+                      'Track Order'.tr,
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w400,
@@ -815,7 +815,7 @@ class CheckboxWidget1 extends GetView<HistoryController> {
                   padding: EdgeInsets.all(8),
                   child: Center(
                     child: Text(
-                      'Track Order',
+                      'Track Order'.tr,
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w400,
@@ -862,7 +862,7 @@ class CheckboxWidget2 extends GetView<HistoryController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
               child: Text(
-                'Points Expiry',
+                'Points Expiry'.tr,
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w500,
@@ -919,7 +919,7 @@ class CheckboxWidget2 extends GetView<HistoryController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
               child: Text(
-                'Points History',
+                'Points History'.tr,
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w500,
@@ -974,7 +974,7 @@ class CheckboxWidget2 extends GetView<HistoryController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
               child: Text(
-                'Points Expiry',
+                'Points Expiry'.tr,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
@@ -1031,7 +1031,7 @@ class CheckboxWidget2 extends GetView<HistoryController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
               child: Text(
-                'Points History',
+                'Points History'.tr,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
@@ -1067,7 +1067,7 @@ class CheckboxWidget2 extends GetView<HistoryController> {
 
 Widget pointWidget(String? text, {double? fontSize, Color? color}) {
   return Text(
-    text ?? "",
+    (text ?? "").tr,
     textAlign: TextAlign.center,
     style: TextStyle(
         fontSize: fontSize ?? 16,
@@ -1102,14 +1102,14 @@ myContainer() {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Total Points',
+                'Total Points'.tr,
                 style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     color: Color(0xff484848)),
               ),
               Text(
-                'Earned',
+                'Earned'.tr,
                 style: TextStyle(fontSize: 26, fontWeight: FontWeight.w500),
               )
             ],
@@ -1153,14 +1153,14 @@ myContainerMobile() {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Total Points',
+                'Total Points'.tr,
                 style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                     color: Color(0xff484848)),
               ),
               Text(
-                'Earned',
+                'Earned'.tr,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               )
             ],
@@ -1178,7 +1178,8 @@ myContainerMobile() {
   );
 }
 
-pointsHistory(String? points, text, status, type, {Color? color}) {
+pointsHistory(String? points, String? text, status, String? type,
+    {Color? color}) {
   return Container(
     alignment: Alignment.center,
     margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
@@ -1206,7 +1207,7 @@ pointsHistory(String? points, text, status, type, {Color? color}) {
                         color: color ?? Color(0xff4BB033)),
                   ),
                   Text(
-                    'Points',
+                    'Points'.tr,
                     style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w400,
@@ -1216,7 +1217,7 @@ pointsHistory(String? points, text, status, type, {Color? color}) {
               ),
               Center(
                 child: Text(
-                  '25 sept 2023 | 20:12pm',
+                  '25 sept 2023 | 20:12pm'.tr,
                   style: TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.w400,
@@ -1227,7 +1228,7 @@ pointsHistory(String? points, text, status, type, {Color? color}) {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    text ?? "",
+                    (text ?? "").tr,
                     style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w500,
@@ -1252,7 +1253,7 @@ pointsHistory(String? points, text, status, type, {Color? color}) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              type ?? "",
+              (type ?? "").tr,
               style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,

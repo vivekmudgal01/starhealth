@@ -40,19 +40,27 @@ class SupportController extends GetxController {
   }
 
   Open_Email() async {
-    final Uri emailLaunchUri = Uri(
-      scheme: 'mailto',
-      path: 'example@gmail.com', // Change to recipient email
-      queryParameters: {
-        'subject': 'Hello!',
-        'body': 'I wanted to reach out...',
-      },
-    );
+    try {
+      final Uri emailLaunchUri = Uri(
+        scheme: 'mailto',
+        path: 'example@gmail.com', // Change to recipient email
+        queryParameters: {
+          'subject': 'Hello!',
+          'body': 'I wanted to reach out...',
+        },
+      );
 
-    if (await canLaunchUrl(emailLaunchUri)) {
-      await launchUrl(emailLaunchUri);
-    } else {
-      print("Could not launch email app");
+      if (await canLaunchUrl(emailLaunchUri)) {
+        try {
+          await launchUrl(emailLaunchUri);
+        } catch (e) {
+          print("error--${e.toString()}");
+        }
+      } else {
+        print("Could not launch email app");
+      }
+    } catch (e) {
+      print("errorssssssssss-${e.toString()}");
     }
   }
 }

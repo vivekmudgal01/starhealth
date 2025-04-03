@@ -45,7 +45,7 @@ class PastEnquiryView extends GetView<PastEnquiryController> {
                         width: 15,
                       ),
                       Text(
-                        'Past Enquiry',
+                        'Past Enquiry'.tr,
                         style: TextStyle(
                             fontSize: 24,
                             color: Color(0xFFE4F4F4F),
@@ -104,7 +104,7 @@ class PastEnquiryView extends GetView<PastEnquiryController> {
                         width: 15,
                       ),
                       Text(
-                        'Past Enquiry',
+                        'Past Enquiry'.tr,
                         style: TextStyle(
                             fontSize: 24,
                             color: Color(0xFFE4F4F4F),
@@ -196,16 +196,16 @@ class CustomGrid extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: RichText(
                   text: TextSpan(
-                      text: 'Enquiry :',
+                      text: 'Enquiry :'.tr,
                       style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: Colors.white),
                       children: [
                     TextSpan(
-                        text: ' App related issue',
+                        text: ' App related issue'.tr,
                         style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 20,
                             fontWeight: FontWeight.w500,
                             color: Colors.white))
                   ])),
@@ -224,7 +224,7 @@ class CustomGrid extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Enquiry id :',
+                        'Enquiry id :'.tr,
                         style: TextStyle(
                             fontSize: 21, fontWeight: FontWeight.w500),
                       ),
@@ -242,12 +242,12 @@ class CustomGrid extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Status :',
+                        'Status :'.tr,
                         style: TextStyle(
                             fontSize: 21, fontWeight: FontWeight.w500),
                       ),
                       Text(
-                        data.Status,
+                        data.Status.tr,
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -262,7 +262,7 @@ class CustomGrid extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Date & Time :',
+                        'Date & Time :'.tr,
                         style: TextStyle(
                             fontSize: 21, fontWeight: FontWeight.w500),
                       ),
@@ -275,7 +275,7 @@ class CustomGrid extends StatelessWidget {
                                 fontSize: 18, fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            data.Time,
+                            data.Time.tr,
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w400,
@@ -299,12 +299,12 @@ class CustomGrid extends StatelessWidget {
             child: Center(
               child: RichText(
                   text: TextSpan(
-                      text: 'Remark :',
+                      text: 'Remark :'.tr,
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                       children: [
                     TextSpan(
-                        text: ' Issue will resolve soon',
+                        text: ' Issue will resolve soon'.tr,
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w500))
                   ])),
@@ -348,14 +348,14 @@ class CustomGridMobile extends StatelessWidget {
               child: Center(
                 child: RichText(
                     text: TextSpan(
-                        text: 'Enquiry :',
+                        text: 'Enquiry :'.tr,
                         style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
                             color: Colors.white),
                         children: [
                       TextSpan(
-                          text: ' App related issue',
+                          text: ' App related issue'.tr,
                           style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w500,
@@ -377,7 +377,7 @@ class CustomGridMobile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Enquiry id :',
+                        'Enquiry id :'.tr,
                         style: TextStyle(
                             fontSize: 21, fontWeight: FontWeight.w500),
                       ),
@@ -395,12 +395,12 @@ class CustomGridMobile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Status :',
+                        'Status :'.tr,
                         style: TextStyle(
                             fontSize: 21, fontWeight: FontWeight.w500),
                       ),
                       Text(
-                        data.Status,
+                        data.Status.tr,
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -416,7 +416,7 @@ class CustomGridMobile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Date & Time :',
+                        'Date & Time :'.tr,
                         style: TextStyle(
                             fontSize: 21, fontWeight: FontWeight.w500),
                       ),
@@ -429,7 +429,7 @@ class CustomGridMobile extends StatelessWidget {
                                 fontSize: 18, fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            data.Time,
+                            data.Time.tr,
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w400,
@@ -453,14 +453,18 @@ class CustomGridMobile extends StatelessWidget {
             child: Center(
               child: RichText(
                   text: TextSpan(
-                      text: 'Remark :',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      text: 'Remark :'.tr,
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black),
                       children: [
                     TextSpan(
-                        text: ' Issue will resolve soon',
+                        text: ' Issue will resolve soon'.tr,
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500))
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black))
                   ])),
             ),
           )

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:star_health/app/modules/home/controllers/home_controller.dart';
 import 'package:star_health/app/modules/rewards/views/rewards_view.dart';
 import 'package:star_health/app/routes/app_pages.dart';
 import 'package:star_health/models/catalogueModel.dart';
 import 'package:star_health/services/remote_services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class HomeView extends GetView<HomeController> {
   HomeView({super.key});
@@ -66,6 +68,8 @@ class HomeView extends GetView<HomeController> {
         'Create Policy',
         ''),
   ];
+  final box = GetStorage(); // GetStorage instance
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,6 +82,20 @@ class HomeView extends GetView<HomeController> {
             ),
             fit: BoxFit.cover,
           ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                var newLocale = Get.locale == Locale('en', 'US')
+                    ? Locale('hi', 'IN')
+                    : Locale('en', 'US');
+
+                Get.updateLocale(newLocale);
+                box.write('locale',
+                    newLocale.languageCode); // Store selected language
+              },
+              child: Text('English'.tr),
+            ),
+          ],
           backgroundColor: Color(0xFF018EE0),
         ),
         body: Center(

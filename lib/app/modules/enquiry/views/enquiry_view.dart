@@ -50,7 +50,7 @@ class EnquiryView extends GetView<EnquiryController> {
                               width: 15,
                             ),
                             Text(
-                              'Enquiry form',
+                              'Enquiry form'.tr,
                               style: TextStyle(
                                   fontSize: 24,
                                   color: Color(0xFFE4F4F4F),
@@ -72,7 +72,7 @@ class EnquiryView extends GetView<EnquiryController> {
                               Get.toNamed(Routes.PAST_ENQUIRY);
                             },
                             child: Text(
-                              ' Past Enquiries',
+                              ' Past Enquiries'.tr,
                               style:
                                   TextStyle(fontSize: 18, color: Colors.white),
                             ),
@@ -88,7 +88,7 @@ class EnquiryView extends GetView<EnquiryController> {
                           padding: const EdgeInsets.only(
                               left: 47, top: 30, bottom: 4),
                           child: Text(
-                            'Enquiry',
+                            'Enquiry'.tr,
                             style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w600,
@@ -105,7 +105,7 @@ class EnquiryView extends GetView<EnquiryController> {
                                 borderRadius: BorderRadius.circular(6)),
                             child: Obx(
                               () => DropdownButtonFormField<String>(
-                                padding: const EdgeInsets.all(15),
+                                padding: EdgeInsets.all(15),
                                 isExpanded: true,
                                 items: controller.futureenquiryModel.value.data
                                         ?.map((e) {
@@ -121,8 +121,8 @@ class EnquiryView extends GetView<EnquiryController> {
                                   print("Selected: $value");
                                 },
                                 iconEnabledColor: Colors.blue,
-                                decoration: const InputDecoration(
-                                  hintText: 'Select Enquiry',
+                                decoration: InputDecoration(
+                                  hintText: 'Select Enquiry'.tr,
                                   border: OutlineInputBorder(),
                                 ),
                               ),
@@ -133,7 +133,7 @@ class EnquiryView extends GetView<EnquiryController> {
                           padding: const EdgeInsets.only(
                               left: 47, top: 30, bottom: 4),
                           child: Text(
-                            'Message',
+                            'Message'.tr,
                             style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w600,
@@ -151,7 +151,7 @@ class EnquiryView extends GetView<EnquiryController> {
                               maxLines: 10,
                               decoration: InputDecoration(
                                   contentPadding: EdgeInsets.all(8),
-                                  hintText: 'Write details of your Enquiry',
+                                  hintText: 'Write details of your Enquiry'.tr,
                                   border: InputBorder.none),
                             ),
                           ),
@@ -189,7 +189,7 @@ class EnquiryView extends GetView<EnquiryController> {
                                 Padding(
                                   padding: const EdgeInsets.all(12.0),
                                   child: Text(
-                                    'Attach Photo, Video or Document',
+                                    'Attach Photo, Video or Document'.tr,
                                     style: TextStyle(
                                       decoration: TextDecoration.underline,
                                       decorationColor: Colors.blueAccent,
@@ -215,7 +215,7 @@ class EnquiryView extends GetView<EnquiryController> {
                             autofocus: true,
                             onPressed: () {},
                             child: Text(
-                              'Submit',
+                              'Submit'.tr,
                               style:
                                   TextStyle(fontSize: 18, color: Colors.white),
                             ),
@@ -252,7 +252,7 @@ class EnquiryView extends GetView<EnquiryController> {
                               width: 10,
                             ),
                             Text(
-                              'Enquiry form',
+                              'Enquiry form'.tr,
                               style: TextStyle(
                                   fontSize: 24,
                                   color: Color(0xFFE4F4F4F),
@@ -272,7 +272,7 @@ class EnquiryView extends GetView<EnquiryController> {
                             Get.toNamed(Routes.PAST_ENQUIRY);
                           },
                           child: Text(
-                            ' Past Enquiries',
+                            ' Past Enquiries'.tr,
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           ),
                         )
@@ -286,7 +286,7 @@ class EnquiryView extends GetView<EnquiryController> {
                           padding: const EdgeInsets.only(
                               left: 10, top: 30, bottom: 4),
                           child: Text(
-                            'Enquiry',
+                            'Enquiry'.tr,
                             style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w600,
@@ -319,8 +319,8 @@ class EnquiryView extends GetView<EnquiryController> {
                                   print("Selected: $value");
                                 },
                                 iconEnabledColor: Colors.blue,
-                                decoration: const InputDecoration(
-                                  hintText: 'Select Enquiry',
+                                decoration: InputDecoration(
+                                  hintText: 'Select Enquiry'.tr,
                                   border: OutlineInputBorder(),
                                 ),
                               ),
@@ -331,7 +331,7 @@ class EnquiryView extends GetView<EnquiryController> {
                           padding: const EdgeInsets.only(
                               left: 10, top: 30, bottom: 4),
                           child: Text(
-                            'Message',
+                            'Message'.tr,
                             style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w600,
@@ -349,7 +349,7 @@ class EnquiryView extends GetView<EnquiryController> {
                               maxLines: 10,
                               decoration: InputDecoration(
                                   contentPadding: EdgeInsets.all(8),
-                                  hintText: 'Write details of your Enquiry',
+                                  hintText: 'Write details of your Enquiry'.tr,
                                   border: InputBorder.none),
                             ),
                           ),
@@ -387,7 +387,7 @@ class EnquiryView extends GetView<EnquiryController> {
                                 Padding(
                                   padding: const EdgeInsets.all(12.0),
                                   child: Text(
-                                    'Attach Photo, Video or Document',
+                                    'Attach Photo, Video or Document'.tr,
                                     style: TextStyle(
                                       decoration: TextDecoration.underline,
                                       decorationColor: Colors.blueAccent,
@@ -413,7 +413,7 @@ class EnquiryView extends GetView<EnquiryController> {
                             autofocus: true,
                             onPressed: () {},
                             child: Text(
-                              'Submit',
+                              'Submit'.tr,
                               style:
                                   TextStyle(fontSize: 18, color: Colors.white),
                             ),

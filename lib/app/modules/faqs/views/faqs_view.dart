@@ -50,7 +50,7 @@ class FaqsView extends GetView<FaqsController> {
                               width: 15,
                             ),
                             Text(
-                              'FAQs',
+                              'FAQs'.tr,
                               style: TextStyle(
                                   fontSize: 24,
                                   color: Color(0xFFE4F4F4F),
@@ -89,7 +89,7 @@ class FaqsView extends GetView<FaqsController> {
                               width: 15,
                             ),
                             Text(
-                              'FAQs',
+                              'FAQs'.tr,
                               style: TextStyle(
                                   fontSize: 24,
                                   color: Color(0xFFE4F4F4F),

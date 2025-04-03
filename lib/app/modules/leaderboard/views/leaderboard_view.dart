@@ -43,7 +43,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                           width: 15,
                         ),
                         Text(
-                          'Leaderboard',
+                          'Leaderboard'.tr,
                           style: TextStyle(
                               fontSize: 24,
                               color: Color(0xFFE4F4F4F),
@@ -87,7 +87,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                                       children: [
                                     TextSpan(text: '  '),
                                     TextSpan(
-                                        text: 'Pts',
+                                        text: 'Pts'.tr,
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w600,
@@ -127,7 +127,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                                       children: [
                                     TextSpan(text: '  '),
                                     TextSpan(
-                                        text: 'Pts',
+                                        text: 'Pts'.tr,
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w600,
@@ -167,7 +167,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                                       children: [
                                     TextSpan(text: '  '),
                                     TextSpan(
-                                        text: 'Pts',
+                                        text: 'Pts'.tr,
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w600,
@@ -230,7 +230,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                           width: 15,
                         ),
                         Text(
-                          'Leaderboard',
+                          'Leaderboard'.tr,
                           style: TextStyle(
                               fontSize: 20,
                               color: Color(0xFFE4F4F4F),
@@ -275,7 +275,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                                       children: [
                                     TextSpan(text: '  '),
                                     TextSpan(
-                                        text: 'Pts',
+                                        text: 'Pts'.tr,
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600,
@@ -317,7 +317,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                                       children: [
                                     TextSpan(text: '  '),
                                     TextSpan(
-                                        text: 'Pts',
+                                        text: 'Pts'.tr,
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600,
@@ -359,7 +359,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                                       children: [
                                     TextSpan(text: '  '),
                                     TextSpan(
-                                        text: 'Pts',
+                                        text: 'Pts'.tr,
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600,
@@ -448,7 +448,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Vivek Mudgal',
+                                'Vivek Mudgal'.tr,
                                 style: TextStyle(
                                     fontSize: 22,
                                     fontWeight: FontWeight.w600,
@@ -465,7 +465,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                                 ),
                                 TextSpan(text: '  '),
                                 TextSpan(
-                                  text: 'Points',
+                                  text: 'Points'.tr,
                                   style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.w600,
@@ -553,7 +553,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Vivek Mudgal',
+                                'Vivek Mudgal'.tr,
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
@@ -570,7 +570,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                                 ),
                                 TextSpan(text: '  '),
                                 TextSpan(
-                                  text: 'Points',
+                                  text: 'Points'.tr,
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,

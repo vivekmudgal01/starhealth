@@ -227,7 +227,7 @@ class RedeemView extends GetView<RedeemController> {
                                       width: 15,
                                     ),
                                     Text(
-                                      'Redeem Catalogue',
+                                      'Redeem Catalogue'.tr,
                                       style: TextStyle(
                                           fontSize: 24,
                                           color: Color(0xFFE4F4F4F),
@@ -244,15 +244,16 @@ class RedeemView extends GetView<RedeemController> {
                                     Container(
                                       height: Get.height * 0.06,
                                       width: Get.width * 0.3,
-                                      child: TextField(
+                                      child: TextFormField(
                                         decoration: InputDecoration(
                                             border: OutlineInputBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            // filled: true,
-                                            //   enabled: false,
+                                                    BorderRadius.circular(4)),
+                                            filled: true,
+
+                                            // enabled: false,
                                             fillColor: Colors.white,
-                                            labelText: 'Search here',
+                                            labelText: 'Search here'.tr,
                                             prefixIcon: Icon(Icons.search)),
                                       ),
                                     ),
@@ -409,7 +410,7 @@ class RedeemView extends GetView<RedeemController> {
                                       width: 10,
                                     ),
                                     Text(
-                                      'Redeem Catalogue',
+                                      'Redeem Catalogue'.tr,
                                       style: TextStyle(
                                           fontSize: 20,
                                           color: Color(0xFFE4F4F4F),
@@ -436,7 +437,7 @@ class RedeemView extends GetView<RedeemController> {
 
                                         // enabled: false,
                                         fillColor: Colors.white,
-                                        labelText: 'Search here',
+                                        labelText: 'Search here'.tr,
                                         prefixIcon: Icon(Icons.search)),
                                   ),
                                 ),
@@ -580,7 +581,7 @@ class CustomList extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Color(0xff4BB033), shape: BoxShape.rectangle),
                       child: Text(
-                        'Available for redeem',
+                        'Available for redeem'.tr,
                         // data.Container,
                         style: TextStyle(fontSize: 16, color: Colors.white),
                       ).paddingOnly(left: 12),
@@ -636,11 +637,13 @@ class CustomList extends StatelessWidget {
                             text: TextSpan(
                                 text: data.price ?? '',
                                 style: TextStyle(
-                                    fontSize: 24, fontWeight: FontWeight.bold),
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
                                 children: <TextSpan>[
                                   TextSpan(text: ' '),
                                   TextSpan(
-                                      text: 'Pts',
+                                      text: 'Pts'.tr,
                                       style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.black,
@@ -648,9 +651,9 @@ class CustomList extends StatelessWidget {
                                 ]),
                           ),
                         ),
-                        SizedBox(),
-                        Container(),
-                        Card(),
+                        // SizedBox(),
+                        // Container(),
+                        // Card(),
                         GestureDetector(
                           onTap: onTap,
                           child: Padding(
@@ -666,7 +669,7 @@ class CustomList extends StatelessWidget {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Center(
                                     child: Text(
-                                      'Redeem Now',
+                                      'Redeem Now'.tr,
                                       style: TextStyle(
                                           fontSize: 14, color: Colors.white),
                                     ),
@@ -722,7 +725,7 @@ class CustomListMobile extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Color(0xff4BB033), shape: BoxShape.rectangle),
                       child: Text(
-                        'Available for redeem',
+                        'Available for redeem'.tr,
                         // data.Container,
                         style: TextStyle(
                             fontSize: 11,
@@ -782,11 +785,13 @@ class CustomListMobile extends StatelessWidget {
                             text: TextSpan(
                                 text: data.price ?? '',
                                 style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black),
                                 children: <TextSpan>[
                                   TextSpan(text: ' '),
                                   TextSpan(
-                                      text: 'Pts',
+                                      text: 'Pts'.tr,
                                       style: TextStyle(
                                           fontSize: 12,
                                           color: Colors.black,
@@ -812,7 +817,7 @@ class CustomListMobile extends StatelessWidget {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Center(
                                     child: Text(
-                                      'Redeem Now',
+                                      'Redeem Now'.tr,
                                       style: TextStyle(
                                           fontSize: 9,
                                           fontWeight: FontWeight.w400,

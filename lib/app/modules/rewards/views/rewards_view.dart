@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:star_health/app/data/values/strings.dart';
 import 'package:star_health/app/modules/redeem/views/redeem_view.dart';
 import 'package:star_health/app/routes/app_pages.dart';
 import 'package:star_health/models/catalogueModel.dart';
@@ -104,7 +106,7 @@ class RewardsView extends GetView<RewardsController> {
                                         width: 15,
                                       ),
                                       Text(
-                                        'Rewards',
+                                        "Rewards".tr,
                                         style: TextStyle(
                                             fontSize: 24,
                                             color: Color(0xFFE4F4F4F),
@@ -130,8 +132,7 @@ class RewardsView extends GetView<RewardsController> {
                                         onPressed: controller
                                                 .isDownloading.value
                                             ? null
-                                            : () => controller.downloadFile(
-                                                'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flower_jtca001.jpg/1024px-Flower_jtca001.jpg'),
+                                            : () => controller.downloadFile(),
                                         child: Row(
                                           children: [
                                             Icon(
@@ -139,9 +140,9 @@ class RewardsView extends GetView<RewardsController> {
                                               color: Color(0xFFE018EE0),
                                             ),
                                             Text(
-                                              ' Download Rule Book',
+                                              ' Download Rule Book'.tr,
                                               style: TextStyle(
-                                                  fontSize: 18,
+                                                  fontSize: 16,
                                                   color: Color(0xFFE018EE0)),
                                             ),
                                           ],
@@ -202,7 +203,7 @@ class RewardsView extends GetView<RewardsController> {
                                                 : CircularProgressIndicator(),
                                           ),
                                           Text(
-                                            'Total Points Earned',
+                                            'Total Points Earned'.tr,
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w500),
@@ -254,7 +255,7 @@ class RewardsView extends GetView<RewardsController> {
                                                 : CircularProgressIndicator(),
                                           ),
                                           Text(
-                                            'Total Points Redeem',
+                                            'Total Points Redeem'.tr,
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w500),
@@ -306,7 +307,7 @@ class RewardsView extends GetView<RewardsController> {
                                                 : CircularProgressIndicator(),
                                           ),
                                           Text(
-                                            'Points Available',
+                                            'Points Available'.tr,
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w500),
@@ -358,7 +359,7 @@ class RewardsView extends GetView<RewardsController> {
                                                 : CircularProgressIndicator(),
                                           ),
                                           Text(
-                                            'Points Expiry by today',
+                                            'Points Expiry by today'.tr,
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w500),
@@ -411,7 +412,7 @@ class RewardsView extends GetView<RewardsController> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 30, horizontal: 8),
                               child: Text(
-                                'Product Suggestion',
+                                'Product Suggestion'.tr,
                                 style: TextStyle(
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
@@ -516,7 +517,7 @@ class RewardsView extends GetView<RewardsController> {
                                         width: 10,
                                       ),
                                       Text(
-                                        'Rewards',
+                                        'Rewards'.tr,
                                         style: TextStyle(
                                             fontSize: 20,
                                             color: Color(0xFFE4F4F4F),
@@ -542,8 +543,7 @@ class RewardsView extends GetView<RewardsController> {
                                         onPressed: controller
                                                 .isDownloading.value
                                             ? null
-                                            : () => controller.downloadFile(
-                                                'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flower_jtca001.jpg/1024px-Flower_jtca001.jpg'),
+                                            : () => controller.downloadFile(),
                                         child: Row(
                                           children: [
                                             Icon(
@@ -551,9 +551,9 @@ class RewardsView extends GetView<RewardsController> {
                                               color: Colors.black,
                                             ),
                                             Text(
-                                              ' Download Rule Book',
+                                              ' Download Rule Book'.tr,
                                               style: TextStyle(
-                                                  fontSize: 14,
+                                                  fontSize: 12,
                                                   color: Colors.black),
                                             ),
                                           ],
@@ -619,7 +619,7 @@ class RewardsView extends GetView<RewardsController> {
                                                     : CircularProgressIndicator(),
                                               ),
                                               Text(
-                                                'Total Points Earned',
+                                                'Total Points Earned'.tr,
                                                 style: TextStyle(
                                                     fontSize: 12,
                                                     fontWeight:
@@ -674,7 +674,7 @@ class RewardsView extends GetView<RewardsController> {
                                                     : CircularProgressIndicator(),
                                               ),
                                               Text(
-                                                'Total Points Redeem',
+                                                'Total Points Redeem'.tr,
                                                 style: TextStyle(
                                                     fontSize: 12,
                                                     fontWeight:
@@ -741,7 +741,7 @@ class RewardsView extends GetView<RewardsController> {
                                                     : CircularProgressIndicator(),
                                               ),
                                               Text(
-                                                'Points Available',
+                                                'Points Available'.tr,
                                                 style: TextStyle(
                                                     fontSize: 12,
                                                     fontWeight:
@@ -798,7 +798,7 @@ class RewardsView extends GetView<RewardsController> {
                                                     : CircularProgressIndicator(),
                                               ),
                                               Text(
-                                                'Points Expiry by today',
+                                                'Points Expiry by today'.tr,
                                                 style: TextStyle(
                                                     fontSize: 12,
                                                     fontWeight:
@@ -1048,7 +1048,7 @@ class CustomCard extends StatelessWidget {
               height: 20,
             ),
             Text(
-              data.Title,
+              data.Title.tr,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             )
           ],
@@ -1101,7 +1101,7 @@ class CustomCardMobile extends StatelessWidget {
               height: 20,
             ),
             Text(
-              data.Title,
+              data.Title.tr,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             )
           ],
@@ -1111,6 +1111,7 @@ class CustomCardMobile extends StatelessWidget {
   }
 }
 
+final box = GetStorage(); // GetStorage instance
 customAppBar(RewardsController controller) {
   return AppBar(
     automaticallyImplyLeading: false,
@@ -1123,6 +1124,21 @@ customAppBar(RewardsController controller) {
       width: 200,
     ),
     actions: [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+          onPressed: () {
+            var newLocale = Get.locale == Locale('en', 'US')
+                ? Locale('hi', 'IN')
+                : Locale('en', 'US');
+
+            Get.updateLocale(newLocale);
+            box.write(
+                'locale', newLocale.languageCode); // Store selected language
+          },
+          child: Text('English'.tr),
+        ),
+      ),
       Container(
         padding: EdgeInsets.symmetric(horizontal: 6, vertical: 8),
         decoration: BoxDecoration(
@@ -1159,7 +1175,7 @@ customAppBar(RewardsController controller) {
                       : CircularProgressIndicator(),
                 ),
                 Text(
-                  'Points',
+                  'Points'.tr,
                   style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
